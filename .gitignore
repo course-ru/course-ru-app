@@ -1,2 +1,5 @@
+.idea
 *.pyc
+*.iml
 .DS_Store
+courserudb
