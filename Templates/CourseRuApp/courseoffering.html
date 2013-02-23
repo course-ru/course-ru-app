@@ -1,0 +1,13 @@
+{% extends "CourseRuApp/base.html" %}
+
+{% block title %}CourseRu | Курс {{ Course.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ Course.name }}</h1>
+    <p>
+        {{ Course.description }}
+    </p>
+    <p>
+        {{ CourseOffering.date }}
+    </p>
+{% endblock %}

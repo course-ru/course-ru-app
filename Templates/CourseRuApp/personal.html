@@ -1,0 +1,14 @@
+{% extends "CourseRuApp/base.html" %}
+
+{% block title %}CourseRu: личный кабинет{% endblock %}
+
+{% block content %}
+<p>
+    Пользователь <b>{{ User.username }}<b><br>
+    {{ UserProfile.status }}
+    <hr>
+    {% if user == User %}
+    <a href="{% url django.contrib.auth.views.password_change %}">Сменить пароль</a>
+    {% endif %}
+</p>
+{% endblock %}

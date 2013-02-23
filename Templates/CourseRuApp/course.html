@@ -1,0 +1,22 @@
+{% extends "CourseRuApp/base.html" %}
+
+{% block title %}CourseRu | Курс {{ Course.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ Course.name }}</h1>
+    <p>
+    {{ Course.description }}
+    </p>
+    <p>
+    {% if CourseOfferingList %}
+    Предложения курса:
+        <ul>
+        {% for courseOffering in CourseOfferingList %}
+            <li>{{ courseOffering.date }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+    Нет предложений курса
+    {% endif %}
+    </p>
+{% endblock %}
