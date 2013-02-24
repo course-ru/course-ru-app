@@ -173,3 +173,7 @@ EMAIL_PORT = "587"
 EMAIL_HOST_USER = 'courseru@gmail.com'
 EMAIL_HOST_PASSWORD = 'courserupassword'
 EMAIL_USE_TLS = True
+
+FIXTURE_DIRS = (
+    './Fixtures',
+)
