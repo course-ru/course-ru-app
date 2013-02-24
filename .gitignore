@@ -1,28 +1,4 @@
 .idea
 *.pyc
 *.iml
-.DS_Store
-<<<<<<< HEAD
 courserudb
-=======
-
-.idea/.name
-
-.idea/course-ru-app.iml
-
-.idea/encodings.xml
-
-.idea/misc.xml
-
-.idea/modules.xml
-
-.idea/other.xml
-
-.idea/scopes/scope_settings.xml
-
-.idea/testrunner.xml
-
-.idea/vcs.xml
-
-.idea/workspace.xml
->>>>>>> gitignore
