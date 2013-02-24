@@ -12,7 +12,7 @@
     Предложения курса:
         <ul>
         {% for courseOffering in CourseOfferingList %}
-            <li>{{ courseOffering.date }}</li>
+            <li><a href="{% url CourseRuApp.views.courseOffering Course.id courseOffering.id %}">{{ courseOffering.date }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
