@@ -10,7 +10,6 @@ urlpatterns = patterns('CourseRuApp.views',
     url(r'^courses/(?P<courseId>\d+)/$', 'course', name='course'),
     url(r'^courses/(?P<courseId>\d+)/(?P<courseOfferingId>\d+)/$', 'courseOffering', name='courseOffering'),
     url(r'^courses/(?P<courseId>\d+)/addcourseoffering/$', 'addCourseOffering', name='addCourseOffering'),
-    url(r'^user/(?P<userId>\d+)/$', 'personal', name='personal'),
 )
 
 urlpatterns += patterns('', url(r'^admin/', include(admin.site.urls)))

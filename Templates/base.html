@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}CourseRu{% endblock %}</title>
+</head>
+
+<body>
+{% block header %}
+    <p>
+    <a href="{% url CourseRuApp.views.index %}">Главная</a>
+    {% if user.is_authenticated %}
+        | Привет, {{ user.username }} | <a href="{% url django.contrib.auth.views.logout %}">Выйти</a> | <a href="{% url accounts.views.personal %}">Личный кабинет</a>
+    {% else %}
+        | <a href="{% url django.contrib.auth.views.login %}">Войти</a> | <a href="{% url accounts.views.signup %}">Зарегистрироваться</a>
+    {% endif %}
+    </p>
+    <hr />
+{% endblock %}
+<div id="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

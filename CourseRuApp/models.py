@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 class Course(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True) # HTML
-    image = models.CharField(max_length=100)
 
     def __repr__(self):
         return self.name
@@ -22,9 +21,9 @@ class CourseOffering(models.Model):
     def __repr__(self):
         return "%s %s"%(self.course.name, str(self.date))
     def __unicode__(self):
-        return unicode(self.course.name)
+        return unicode("%s %s"%(self.course.name, str(self.date)))
     def __str__(self):
-        return str(self.course.name)
+        return str("%s %s"%(self.course.name, str(self.date)))
 
 class AttachmentType(models.Model):
     name = models.CharField(max_length=100)

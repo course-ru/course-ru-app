@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from accounts.forms import UserCreationForm
 from django.contrib.auth.tokens import default_token_generator
@@ -33,10 +33,10 @@ def signup(request, template_name='Accounts/signup_form.html', email_template_na
     else:
         form = signup_form()
 
-    return render_to_response(template_name, {'form': form}, context_instance=RequestContext(request))
+    return render(template_name, {'form': form})
 
 def signup_done(request, template_name='Accounts/signup_done.html'):
-    return render_to_response(template_name, context_instance=RequestContext(request))
+    return render(template_name)
 
 def signup_confirm(request, uidb36=None, token=None, token_generator=default_token_generator, post_signup_redirect=None):
     if post_signup_redirect is None:
@@ -62,3 +62,9 @@ def signup_confirm(request, uidb36=None, token=None, token_generator=default_tok
 
 def signup_complete(request, template_name='Accounts/signup_complete.html'):
     return render_to_response(template_name, context_instance=RequestContext(request, {'login_url': settings.LOGIN_URL}))
+
+def personal(request, template_name='Accounts/personal.html'):
+    user = request.user
+    userProfile = user.userprofile
+    userCourseOfferings = userProfile.courses.all()
+    return render(request, template_name, {'User': user, 'UserProfile': userProfile, 'UserCourseOfferings': userCourseOfferings})
