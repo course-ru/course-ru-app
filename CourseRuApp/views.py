@@ -7,9 +7,13 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.conf import settings
 from django.db import connection
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
+from accounts.views import *
 from CourseRuApp.models import *
 from CourseRuApp.forms import *
+
+denied = '/accounts/denied/'
 
 def index(request, template_name='CourseRuApp/index.html'):
     return render(request, template_name, {})
@@ -37,7 +41,7 @@ def personal(request, userId, template_name='CourseRuApp/personal.html'):
     userProfile = user.userprofile
     return render(request, template_name, {'User': user, 'UserProfile': userProfile})
 
-@login_required
+@permission_required('CourseRuApp.add_course', login_url=denied)
 def addCourse(request, template_name='CourseRuApp/addcourse.html', addcourse_form=AddCourseForm, post_addcourse_redirect=None):
     if request.method == 'POST':
         form = addcourse_form(request.POST)
@@ -50,7 +54,7 @@ def addCourse(request, template_name='CourseRuApp/addcourse.html', addcourse_for
         form = addcourse_form()
     return render(request, template_name, {'form': form})
 
-@login_required
+@permission_required('CourseRuApp.add_courseoffering', login_url=denied)
 def addCourseOffering(request, courseId, addcourseoffering_form=AddCourseOfferingForm, template_name='CourseRuApp/addcourseoffering.html', post_addcourseoffering_redirect=None):
     course = get_object_or_404(Course, pk=courseId)
     if request.method == 'POST':
@@ -65,7 +69,7 @@ def addCourseOffering(request, courseId, addcourseoffering_form=AddCourseOfferin
         form = addcourseoffering_form(initial={'course': course})
     return render(request, template_name, {'form': form})
 
-@login_required
+@permission_required('CourseRuApp.can_apply', login_url=denied)
 def courseOfferingApply(request, courseId, courseOfferingId):
     userProfile = request.user.userprofile
     userCourseOfferings = userProfile.courses.filter(id=courseOfferingId)
@@ -74,3 +78,4 @@ def courseOfferingApply(request, courseId, courseOfferingId):
         userProfile.courses.add(courseOffering)
         userProfile.save()
     return HttpResponseRedirect(reverse('CourseRuApp.views.courseOffering', kwargs={'courseId': courseId, 'courseOfferingId': courseOfferingId}))
+

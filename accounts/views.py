@@ -33,10 +33,10 @@ def signup(request, template_name='Accounts/signup_form.html', email_template_na
     else:
         form = signup_form()
 
-    return render(template_name, {'form': form})
+    return render(request, template_name, {'form': form})
 
 def signup_done(request, template_name='Accounts/signup_done.html'):
-    return render(template_name)
+    return render(request, template_name)
 
 def signup_confirm(request, uidb36=None, token=None, token_generator=default_token_generator, post_signup_redirect=None):
     if post_signup_redirect is None:
@@ -68,3 +68,6 @@ def personal(request, template_name='Accounts/personal.html'):
     userProfile = user.userprofile
     userCourseOfferings = userProfile.courses.all()
     return render(request, template_name, {'User': user, 'UserProfile': userProfile, 'UserCourseOfferings': userCourseOfferings})
+
+def denied(request, template_name='Accounts/noaccess.html'):
+    return render(request, template_name)

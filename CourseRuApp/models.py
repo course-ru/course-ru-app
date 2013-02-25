@@ -14,6 +14,9 @@ class Course(models.Model):
         return str(self.name)
 
 class CourseOffering(models.Model):
+    class Meta:
+        permissions = (('can_apply','Can apply for Course Offering'),)
+
     course = models.ForeignKey(Course)
 
     date = models.DateField()
