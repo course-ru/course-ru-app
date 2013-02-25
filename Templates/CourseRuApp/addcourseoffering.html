@@ -4,7 +4,18 @@
 
 {% block content %}
 <h1>Создание предложения курса</h1>
-    <p>
-        Выбранный курс: <b>{{ Course.name }}</b>
-    </p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}: {{ field }}
+                {{ field.errors }}
+            </p>
+        {% endfor %}
+        <p>
+            <input type="submit" value="Добавить курс" />
+        </p>
+    </form>
+
 {% endblock %}

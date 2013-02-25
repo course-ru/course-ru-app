@@ -43,14 +43,24 @@ def addCourse(request, template_name='CourseRuApp/addcourse.html', addcourse_for
         if form.is_valid():
             course = form.save()
             if post_addcourse_redirect is None:
-                 post_addcourse_redirect = reverse('CourseRuApp.views.course', course.id)
-            return HttpResponseRedirect(post_addcourse_redirect) # Redirect after POST
+                 post_addcourse_redirect = reverse('CourseRuApp.views.course', kwargs={'courseId': course.id})
+            return HttpResponseRedirect(post_addcourse_redirect)
     else:
         form = addcourse_form()
     return render(request, template_name, {'form': form})
 
 
 @login_required
-def addCourseOffering(request, courseId, template_name='CourseRuApp/addcourseoffering.html'):
+def addCourseOffering(request, courseId, addcourseoffering_form=AddCourseOfferingForm, template_name='CourseRuApp/addcourseoffering.html', post_addcourseoffering_redirect=None):
     course = get_object_or_404(Course, pk=courseId)
-    return render(request, template_name, {'Course': course})
+    if request.method == 'POST':
+        form = addcourseoffering_form(request.POST)
+        if form.is_valid():
+            courseOffering = form.save()
+            course = courseOffering.course
+            if post_addcourseoffering_redirect is None:
+                post_addcourseoffering_redirect = reverse('CourseRuApp.views.courseOffering', kwargs={'courseId': course.id, 'courseOfferingId': courseOffering.id})
+            return HttpResponseRedirect(post_addcourseoffering_redirect)
+    else:
+        form = addcourseoffering_form(initial={'course': course})
+    return render(request, template_name, {'form': form})

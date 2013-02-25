@@ -19,4 +19,8 @@
     Нет предложений курса
     {% endif %}
     </p>
+    <hr />
+    <p>
+    <a href="{% url CourseRuApp.views.addCourseOffering Course.id %}">Добавить предложение курса</a>
+    </p>
 {% endblock %}

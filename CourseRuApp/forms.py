@@ -32,3 +32,14 @@ class AddCourseForm(ModelForm):
 class AddCourseOfferingForm(ModelForm):
     class Meta:
         model = CourseOffering
+
+    def date_clean(self):
+        date = self.cleaned_data['date']
+        return date
+
+    def save(self, commit=True):
+        courseOffering = super(AddCourseOfferingForm, self).save(commit=False)
+        courseOffering.course = self.cleaned_data['course']
+        courseOffering.date = self.cleaned_data['date']
+        courseOffering.save()
+        return courseOffering
