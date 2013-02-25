@@ -28,7 +28,8 @@ def course(request, courseId, template_name='CourseRuApp/course.html'):
 def courseOffering(request, courseId, courseOfferingId, template_name='CourseRuApp/courseoffering.html'):
     course = get_object_or_404(Course, pk=courseId)
     courseOffering = get_object_or_404(CourseOffering, pk=courseOfferingId)
-    return render(request, template_name, {'Course': course, 'CourseOffering': courseOffering})
+    onCourse = True if (len(request.user.userprofile.courses.filter(id=courseOfferingId)) > 0) else False
+    return render(request, template_name, {'Course': course, 'CourseOffering': courseOffering, 'OnCourse': onCourse})
 
 @login_required
 def personal(request, userId, template_name='CourseRuApp/personal.html'):
@@ -49,7 +50,6 @@ def addCourse(request, template_name='CourseRuApp/addcourse.html', addcourse_for
         form = addcourse_form()
     return render(request, template_name, {'form': form})
 
-
 @login_required
 def addCourseOffering(request, courseId, addcourseoffering_form=AddCourseOfferingForm, template_name='CourseRuApp/addcourseoffering.html', post_addcourseoffering_redirect=None):
     course = get_object_or_404(Course, pk=courseId)
@@ -64,3 +64,13 @@ def addCourseOffering(request, courseId, addcourseoffering_form=AddCourseOfferin
     else:
         form = addcourseoffering_form(initial={'course': course})
     return render(request, template_name, {'form': form})
+
+@login_required
+def courseOfferingApply(request, courseId, courseOfferingId):
+    userProfile = request.user.userprofile
+    userCourseOfferings = userProfile.courses.filter(id=courseOfferingId)
+    courseOffering = get_object_or_404(CourseOffering, pk=courseOfferingId)
+    if len(userCourseOfferings) == 0:
+        userProfile.courses.add(courseOffering)
+        userProfile.save()
+    return HttpResponseRedirect(reverse('CourseRuApp.views.courseOffering', kwargs={'courseId': courseId, 'courseOfferingId': courseOfferingId}))

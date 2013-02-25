@@ -8,8 +8,9 @@ urlpatterns = patterns('CourseRuApp.views',
     url(r'^courses/$', 'courseList', name='courseList'),
     url(r'^addcourse/$', 'addCourse', name='addCourse'),
     url(r'^courses/(?P<courseId>\d+)/$', 'course', name='course'),
-    url(r'^courses/(?P<courseId>\d+)/(?P<courseOfferingId>\d+)/$', 'courseOffering', name='courseOffering'),
     url(r'^courses/(?P<courseId>\d+)/addcourseoffering/$', 'addCourseOffering', name='addCourseOffering'),
+    url(r'^courses/(?P<courseId>\d+)/(?P<courseOfferingId>\d+)/$', 'courseOffering', name='courseOffering'),
+    url(r'^courses/(?P<courseId>\d+)/(?P<courseOfferingId>\d+)/apply/$', 'courseOfferingApply', name='courseOfferingApply'),
 )
 
 urlpatterns += patterns('', url(r'^admin/', include(admin.site.urls)))

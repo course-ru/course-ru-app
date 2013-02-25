@@ -10,4 +10,10 @@
     <p>
         {{ CourseOffering.date }}
     </p>
+    <hr />
+    {% if OnCourse %}
+        <b>Вы вступили в курс</b>
+    {% else %}
+        <a href="{% url CourseRuApp.views.courseOfferingApply Course.id, CourseOffering.id %}">Вступить</a>
+    {% endif %}
 {% endblock %}
