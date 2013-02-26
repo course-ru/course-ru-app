@@ -69,7 +69,6 @@ class UserCreationForm(forms.ModelForm):
         return email_confirm
 
     def save(self, commit=True, domain_override=None, email_template_name='Accounts/signup_email.html', use_https=False, token_generator=default_token_generator):
-
         user = super(UserCreationForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password'])
         user.email = self.cleaned_data['email']

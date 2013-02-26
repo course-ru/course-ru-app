@@ -3,11 +3,10 @@ from CourseRuApp.models import *
 from django.forms import ModelForm
 
 class AddCourseForm(ModelForm):
-
     class Meta:
         model = Course
 
-    def name_clean(self):
+    def clean_name(self):
         name = self.cleaned_data['name']
         courses_found = Course.objects.filter(name__iexact=name)
 
@@ -16,24 +15,23 @@ class AddCourseForm(ModelForm):
 
         return name
 
-
-    def description_clean(self):
+    def clean_description(self):
         description = self.cleaned_data['description']
         return description
-
 
     def save(self, commit=True):
         course = super(AddCourseForm, self).save(commit=False)
         course.name = self.cleaned_data['name']
         course.description = self.cleaned_data['description']
-        course.save()
+        if commit:
+            course.save()
         return course
 
 class AddCourseOfferingForm(ModelForm):
     class Meta:
         model = CourseOffering
 
-    def date_clean(self):
+    def clean_date(self):
         date = self.cleaned_data['date']
         return date
 
@@ -41,5 +39,6 @@ class AddCourseOfferingForm(ModelForm):
         courseOffering = super(AddCourseOfferingForm, self).save(commit=False)
         courseOffering.course = self.cleaned_data['course']
         courseOffering.date = self.cleaned_data['date']
-        courseOffering.save()
+        if commit:
+            courseOffering.save()
         return courseOffering
