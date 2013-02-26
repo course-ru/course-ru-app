@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete', {'template_name': 'Accounts/password_reset_complete.html'}),
     url(r'^profile/$', 'accounts.views.personal', {'template_name': 'Accounts/personal.html'}),
     url(r'^denied/', 'accounts.views.denied', {'template_name': 'Accounts/noaccess.html'}),
+    # remove this later
+    url(r'^init/$', 'accounts.views.init')
 )
 
 urlpatterns += patterns('', url(r'^admin/', include(admin.site.urls)))

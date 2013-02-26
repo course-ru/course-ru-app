@@ -10,6 +10,8 @@ from django.utils.http import urlquote, base36_to_int
 from django.contrib.sites.models import Site
 from django.contrib.sites.models import RequestSite
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.models import Group
+from django.contrib.auth.models import Permission
 
 @csrf_protect
 def signup(request, template_name='Accounts/signup_form.html', email_template_name='Accounts/signup_email.html', signup_form=UserCreationForm, token_generator=default_token_generator, post_signup_redirect=None):
@@ -71,3 +73,13 @@ def personal(request, template_name='Accounts/personal.html'):
 
 def denied(request, template_name='Accounts/noaccess.html'):
     return render(request, template_name)
+
+def init(request):
+    # temp. version
+    #
+    students_group, created = Group.objects.get_or_create(name='Students')
+    students_group.permissions.add(Permission.objects.get(codename='can_apply'))
+    teachers_group, created = Group.objects.get_or_create(name='Teachers')
+    teachers_group.permissions.add(Permission.objects.get(codename='add_course'))
+    teachers_group.permissions.add(Permission.objects.get(codename='add_courseoffering'))
+    return HttpResponse('Groups have been initialized')
