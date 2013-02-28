@@ -10,14 +10,25 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'd40lee7u23qefp',                      # Or path to database file if using sqlite3.
+#         'USER': 'qbwvskbxqdcjhp',                      # Not used with sqlite3.
+#         'PASSWORD': 'mDb_oNrSnupLP6jp6y2i-LrcmS',                  # Not used with sqlite3.
+#         'HOST': 'ec2-54-243-184-143.compute-1.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
+#         'PORT': '5542',                      # Set to empty string for default. Not used with sqlite3.
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'd40lee7u23qefp',                      # Or path to database file if using sqlite3.
-        'USER': 'qbwvskbxqdcjhp',                      # Not used with sqlite3.
-        'PASSWORD': 'mDb_oNrSnupLP6jp6y2i-LrcmS',                  # Not used with sqlite3.
-        'HOST': 'ec2-54-243-184-143.compute-1.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5542',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'djdb',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -167,6 +178,9 @@ EMAIL_USE_TLS = True
 FIXTURE_DIRS = (
     './Fixtures',
 )
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
