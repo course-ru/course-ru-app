@@ -180,7 +180,7 @@ FIXTURE_DIRS = (
 )
 
 import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.parse("postgres://qbwvskbxqdcjhp:mDb_oNrSnupLP6jp6y2i-LrcmS@ec2-54-243-184-143.compute-1.amazonaws.com:5542/d40lee7u23qefp")
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
