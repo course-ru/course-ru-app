@@ -6,7 +6,7 @@
 <p>
     Пользователь <b>{{ User.username }}</b><br>
     {{ UserProfile.status }}
-    <a href="{% url django.contrib.auth.views.password_change %}">Сменить пароль</a>
+    <a href="{% url 'django.contrib.auth.views.password_change' %}">Сменить пароль</a>
     <hr />
     <p>
     {% if UserCourseOfferings %}

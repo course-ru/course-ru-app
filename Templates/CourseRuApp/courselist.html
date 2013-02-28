@@ -8,7 +8,7 @@
     {% if CourseList %}
     <ul>
         {% for course in CourseList %}
-            <li><a href="{% url course course.id %}">{{ course.name }}</a></li>
+            <li><a href="{% url 'course' course.id %}">{{ course.name }}</a></li>
         {% endfor %}
     </ul>
     {% else %}
