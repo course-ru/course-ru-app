@@ -1,1 +1,1 @@
-web: python manage.py runserver 0.0.0.0: --noreload
+web: python /app/manage.py runserver 0.0.0.0: --noreload
