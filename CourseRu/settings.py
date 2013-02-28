@@ -10,7 +10,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {}
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+import os
+print os.getenv("$DATABASE_URL")
+DATABASES = {'default', dj_database_url.config(default='sqlite:////djdb.sqlite')}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -158,12 +163,6 @@ EMAIL_USE_TLS = True
 FIXTURE_DIRS = (
     './Fixtures',
 )
-
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-import os
-print os.getenv("$DATABASE_URL")
-DATABASES['default'] = dj_database_url.config(default='sqlite:////djdb.sqlite')
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
