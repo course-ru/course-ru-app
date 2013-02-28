@@ -13,7 +13,7 @@
         Список курсов:
         <ul>
         {% for userCourseOffering in UserCourseOfferings %}
-            <li><a href="{% url CourseRuApp.views.courseOffering userCourseOffering.course.id, userCourseOffering.id %}">{{ userCourseOffering.course.name }}</a> {{ userCourseOffering.date }}</li>
+            <li><a href="{% url CourseRuApp.views.courseOffering userCourseOffering.course.id userCourseOffering.id %}">{{ userCourseOffering.course.name }}</a> {{ userCourseOffering.date }}</li>
         {% endfor %}
         </ul>
     {% else %}
