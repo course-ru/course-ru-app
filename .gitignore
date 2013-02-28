@@ -1,9 +1,12 @@
-.idea
-*.pyc
+#jetbrains ide's files
 *.iml
-courserudb
-.DS_Store
+.idea
+#compiled python
+*.pyc
+#local dev database
+djdb.sqlite
+#virtual environment created by runsite.sh script
 venv
+#DUNNO KNOW WHAT IT IS. Andrey R, what is it?
+.DS_Store
 CourseRuApp/.DS_Store
-
-courserudb0
