@@ -12,7 +12,7 @@
     Предложения курса:
         <ul>
         {% for courseOffering in CourseOfferingList %}
-            <li><a href="{% url CourseRuApp.views.courseOffering Course.id courseOffering.id %}">{{ courseOffering.date }}</a></li>
+            <li><a href="{% url 'CourseRuApp.views.courseOffering' Course.id courseOffering.id %}">{{ courseOffering.date }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
@@ -21,6 +21,6 @@
     </p>
     <hr />
     <p>
-    <a href="{% url CourseRuApp.views.addCourseOffering Course.id %}">Добавить предложение курса</a>
+    <a href="{% url 'CourseRuApp.views.addCourseOffering' Course.id %}">Добавить предложение курса</a>
     </p>
 {% endblock %}

@@ -5,7 +5,7 @@
 {% block content %}
 <h1>CourseRu</h1>
     <ul>
-        <li><a href="{% url CourseRuApp.views.courseList %}">Список курсов</a></li>
-        <li><a href="{% url CourseRuApp.views.addCourse %}">Добавить курс</a></li>
+        <li><a href="{% url 'CourseRuApp.views.courseList' %}">Список курсов</a></li>
+        <li><a href="{% url 'CourseRuApp.views.addCourse' %}">Добавить курс</a></li>
     </ul>
 {% endblock %}
