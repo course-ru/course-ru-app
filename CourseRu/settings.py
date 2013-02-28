@@ -23,7 +23,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'djdb',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -180,7 +180,7 @@ FIXTURE_DIRS = (
 )
 
 import dj_database_url
-DATABASES['default'] = dj_database_url.parse("postgres://qbwvskbxqdcjhp:mDb_oNrSnupLP6jp6y2i-LrcmS@ec2-54-243-184-143.compute-1.amazonaws.com:5542/d40lee7u23qefp")
+DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
