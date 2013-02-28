@@ -161,6 +161,8 @@ FIXTURE_DIRS = (
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
+import os
+print os.getenv("$DATABASE_URL")
 DATABASES['default'] = dj_database_url.config(default='sqlite:////djdb.sqlite')
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
