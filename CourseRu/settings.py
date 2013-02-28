@@ -10,20 +10,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-##DATABASES = {
-##    'default': {
-##        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-##        'NAME': 'courserudb',                      # Or path to database file if using sqlite3.
-##        'USER': 'root',                      # Not used with sqlite3.
-##        'PASSWORD': 'root',                  # Not used with sqlite3.
-##        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-##        'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
-##    }
-##}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'courserudb',                      # Or path to database file if using sqlite3.
+        'NAME': 'djdb',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -177,3 +167,12 @@ EMAIL_USE_TLS = True
 FIXTURE_DIRS = (
     './Fixtures',
 )
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+import os
+if os.getcwd() == "/app":
+    DATABASES['default'] = dj_database_url.config(default='postgres://localhost')
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

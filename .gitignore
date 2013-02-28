@@ -3,7 +3,7 @@
 *.iml
 courserudb
 .DS_Store
-
+venv
 CourseRuApp/.DS_Store
 
 courserudb0

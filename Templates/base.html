@@ -8,11 +8,11 @@
 <body>
 {% block header %}
     <p>
-    <a href="{% url CourseRuApp.views.index %}">Главная</a>
+    <a href="{% url 'CourseRuApp.views.index' %}">Главная</a>
     {% if user.is_authenticated %}
         | Привет, {{ user.username }} | <a href="{% url django.contrib.auth.views.logout %}">Выйти</a> | <a href="{% url accounts.views.personal %}">Личный кабинет</a>
     {% else %}
-        | <a href="{% url django.contrib.auth.views.login %}">Войти</a> | <a href='{% url django.contrib.auth.views.password_reset %}'>Сброс пароля</a> | <a href="{% url accounts.views.signup %}">Зарегистрироваться</a>
+        | <a href="{% url 'django.contrib.auth.views.login' %}">Войти</a> | <a href='{% url 'django.contrib.auth.views.password_reset' %}'>Сброс пароля</a> | <a href="{% url 'accounts.views.signup' %}">Зарегистрироваться</a>
     {% endif %}
     </p>
     <hr />
