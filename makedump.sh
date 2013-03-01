@@ -1,0 +1,1 @@
+./manage.py dumpdata -n --format json CourseRuApp auth.Group auth.User > initial_data.json
