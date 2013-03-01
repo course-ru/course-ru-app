@@ -16,9 +16,6 @@ from CourseRuApp.forms import *
 denied = '/accounts/denied/'
 
 def index(request, template_name='CourseRuApp/index.html'):
-    return render(request, template_name, {})
-
-def courseList(request, template_name='CourseRuApp/courselist.html'):
     courseList = Course.objects.all()
     return render(request, template_name, {'CourseList': courseList})
 

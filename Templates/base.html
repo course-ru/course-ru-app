@@ -1,26 +1,85 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8">
     <title>{% block title %}CourseRu{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-stickyfooter.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
 </head>
 
 <body>
 {% block header %}
-    <p>
-    <a href="{% url 'CourseRuApp.views.index' %}">Главная</a>
-    {% if user.is_authenticated %}
-        | Привет, {{ user.username }} | <a href="{% url 'django.contrib.auth.views.logout' %}">Выйти</a> | <a href="{% url 'accounts.views.personal' %}">Личный кабинет</a>
-    {% else %}
-        | <a href="{% url 'django.contrib.auth.views.login' %}">Войти</a> | <a href='{% url 'django.contrib.auth.views.password_reset' %}'>Сброс пароля</a> | <a href="{% url 'accounts.views.signup' %}">Зарегистрироваться</a>
-    {% endif %}
-    </p>
-    <hr />
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <h1><a href="{% url 'CourseRuApp.views.index' %}">Главная</a></h1>
+            <div class="container">
+                {% if user.is_authenticated %}
+                    <h3>Привет, {{ user.username }}</h3>
+                    <a href="{% url 'django.contrib.auth.views.logout' %}" class="btn pull-right">Выйти</a>
+                    <a href="{% url 'accounts.views.personal' %}" class="btn pull-right">Личный кабинет</a>
+                {% else %}
+                    <a href="{% url 'django.contrib.auth.views.login' %}" class="btn pull-right" style="width:200px;">Вход</a>
+                    <a href="{% url 'django.contrib.auth.views.password_reset' %}" class="btn pull-right" style="width:200px;">Сброс пароля(убрать отсюда)</a>
+                    <a href="{% url 'accounts.views.signup' %}" class="btn pull-right" style="width:200px;">Зарегистрироваться</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 <div id="content">
+    <div id="wrap">
+        <div class="container">
     {% block content %}
 
     {% endblock %}
+        </div>
+    </div>
 </div>
+<div id="footer">
+    <div class="container">
+        <div id="ul-wrapper" style="height: 20px; margin: 10px 0px 10px 0px;">
+            <ul class="footer-links" style="text-align: center;">
+                <li style="display: inline; padding: 0px 40px 0px 0px;">
+                    <a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>
+                    <!-- Диалог сохранения отзыва -->
+                    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Отзыв о нашем сайте</h3>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="pull-left" rows="6" style="width: 97%;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+                            <button class="btn btn-primary">Отослать</button>
+                        </div>
+                    </div>
+                </li>
+                <li style="display: inline; padding: 0px 0px 0px 40px;">
+                    <a href="Ссылка на подписку">Подписаться на новости</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <!-- Placed at the end of the document so the pages load faster -->
+<!-- use cdn or local script -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
 </body>
 </html>
