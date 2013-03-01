@@ -16,7 +16,7 @@ from account.forms import UserCreationForm
 
 
 @csrf_protect
-def signup(request, template_name='Accounts/signup_form.html', email_template_name='Accounts/signup_email.html',
+def signup(request, template_name='account/signup_form.html', email_template_name='account/signup_email.html',
            signup_form=UserCreationForm, token_generator=default_token_generator, post_signup_redirect=None):
     if post_signup_redirect is None:
         post_signup_redirect = reverse('account.views.signup_done')
@@ -41,7 +41,7 @@ def signup(request, template_name='Accounts/signup_form.html', email_template_na
     return render(request, template_name, {'form': form})
 
 
-def signup_done(request, template_name='Accounts/signup_done.html'):
+def signup_done(request, template_name='account/signup_done.html'):
     return render(request, template_name)
 
 
@@ -69,12 +69,12 @@ def signup_confirm(request, uidb36=None, token=None, token_generator=default_tok
     return HttpResponseRedirect(post_signup_redirect)
 
 
-def signup_complete(request, template_name='Accounts/signup_complete.html'):
+def signup_complete(request, template_name='account/signup_complete.html'):
     return render_to_response(template_name,
                               context_instance=RequestContext(request, {'login_url': settings.LOGIN_URL}))
 
 
-def personal(request, template_name='Accounts/personal.html'):
+def personal(request, template_name='account/personal.html'):
     user = request.user
     userProfile = user.userprofile
     userCourseOfferings = userProfile.courses.all()
@@ -82,7 +82,7 @@ def personal(request, template_name='Accounts/personal.html'):
                   {'User': user, 'UserProfile': userProfile, 'UserCourseOfferings': userCourseOfferings})
 
 
-def denied(request, template_name='Accounts/noaccess.html'):
+def denied(request, template_name='account/noaccess.html'):
     return render(request, template_name)
 
 
