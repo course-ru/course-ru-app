@@ -1,0 +1,6 @@
+{% autoescape off %}
+
+    Для подтверждения регистрации перейдите по ссылке:
+    {{ protocol }}://{{ domain }}{% url 'account.views.signup_confirm' uidb36=uid token=token %}
+
+{% endautoescape %}

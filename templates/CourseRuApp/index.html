@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}CourseRu{% endblock %}
+
+{% block content %}
+    <a href="{% url 'main.views.addCourse' %}" class="btn">Добавить курс</a>
+    {% if CourseList %}
+        <ul class="thumbnails">
+            {% for course in CourseList %}
+                <li class="span4">
+                    <a href="{% url 'course' course.id %}">{{ course.name }}</a>
+
+                    <div class="thumbnail">
+                        <img src="/static/img/dummy_250_180.gif" alt="">
+
+                        <div class="caption">
+                            <p>{{ course.name }}</p>
+                        </div>
+                    </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        Нет курсов
+    {% endif %}
+{% endblock %}

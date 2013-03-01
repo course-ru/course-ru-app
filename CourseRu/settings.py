@@ -11,6 +11,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 import dj_database_url
+
 DATABASES = {'default': dj_database_url.config(default='sqlite:///djdb.sqlite')}
 
 # Local time zone for this installation. Choices can be found here:
@@ -57,9 +58,9 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# Put strings here, like "/home/html/static" or "C:/www/django/static".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
 )
 
 # List of finder classes that know how to find static files in
@@ -67,7 +68,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -77,7 +78,7 @@ SECRET_KEY = '3rijsf&amp;$1quc#*t!tpl@^@_##j3d3)t0r*@(-n*v$&amp;h!kzj9l8'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,7 +97,7 @@ ROOT_URLCONF = 'CourseRu.urls'
 WSGI_APPLICATION = 'CourseRu.wsgi.application'
 
 TEMPLATE_DIRS = (
-    './Templates/',
+    './templates/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -111,8 +112,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     #'django.contrib.admindocs',
-    'CourseRuApp',
-    'accounts',
+    'main',
+    'account',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -144,10 +145,10 @@ LOGGING = {
     }
 }
 
-AUTH_PROFILE_MODULE = 'CourseRuApp.UserProfile'
+AUTH_PROFILE_MODULE = 'main.UserProfile'
 
-#LOGIN_URL = reverse('accounts.login')
-#LOGOUT_URL = reverse('accounts.logout')
+#LOGIN_URL = reverse('account.login')
+#LOGOUT_URL = reverse('account.logout')
 LOGIN_REDIRECT_URL = reverse('index')
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -157,7 +158,7 @@ EMAIL_HOST_PASSWORD = 'courserupassword'
 EMAIL_USE_TLS = True
 
 FIXTURE_DIRS = (
-    './Fixtures',
+    './fixtures',
 )
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
