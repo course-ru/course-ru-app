@@ -9,5 +9,4 @@ Course.ru - платформа для онлайн образования, на�
 * virtualenv (pip install virtualenv)
 * libpq-dev (sudo apt-get install libpq-dev)
 
-Для запуска приложения выполните:
-source runsite.sh
+Для запуска приложения выполните: `source runsite.sh`
