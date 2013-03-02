@@ -9,8 +9,13 @@
 
         <!-- Bootstrap -->
         <link href="/static/css/bootstrap.css" rel="stylesheet">
-        <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="/static/css/bootstrap-stickyfooter.css" rel="stylesheet">
+
+        <!-- App -->
+        <link href="/static/main.css" rel="stylesheet">
+
+        <!-- Responsive -->
+        <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -23,34 +28,38 @@
     </head>
 
     <body>
-        {% block header %}
-            <div class="navbar navbar-inverse">
+        <div id="wrap">
+            <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
-                    <h1><a href="{% url 'main.views.index' %}">Главная</a></h1>
-
                     <div class="container">
-                        {% if user.is_authenticated %}
-                            <h3>Привет, {{ user.username }}</h3>
-                            <a href="{% url 'django.contrib.auth.views.logout' %}" class="btn pull-right">Выйти</a>
-                            <a href="{% url 'account.views.personal' %}" class="btn pull-right">Личный кабинет</a>
-                        {% else %}
-                            <a href="{% url 'django.contrib.auth.views.login' %}" class="btn pull-right"
-                               style="width:200px;">Вход</a>
-                            <a href="{% url 'django.contrib.auth.views.password_reset' %}" class="btn pull-right"
-                               style="width:200px;">Сброс пароля(убрать отсюда)</a>
-                            <a href="{% url 'account.views.signup' %}" class="btn pull-right" style="width:200px;">Зарегистрироваться</a>
-                        {% endif %}
+                        <div class="brand">
+                            <a href="{% url 'index' %}">
+                                <img src="/static/logo.png" alt="logo" width="120">
+                            </a>
+                            <a href="{% url 'index' %}">
+                                <img src="/static/geekuniversity.png" alt="geek university" width="700">
+                            </a>
+                        </div>
                     </div>
+                    {% if user.is_authenticated %}
+                        <h3 class="text-right">Привет, {{ user.username }}</h3>
+                        <a href="{% url 'account.views.personal' %}" class="pull-right">
+                            Личный кабинет
+                        </a>
+                        <a href="{% url 'django.contrib.auth.views.logout' %}" class="pull-right">
+                            Выйти
+                        </a>
+                    {% else %}
+                        <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right" style="width:200px;">
+                            Вход
+                        </a>
+                    {% endif %}
                 </div>
             </div>
-        {% endblock %}
-        <div id="content">
-            <div id="wrap">
-                <div class="container">
-                    {% block content %}
+            <div class="container">
+                {% block content %}
 
-                    {% endblock %}
-                </div>
+                {% endblock %}
             </div>
         </div>
         <div id="footer">

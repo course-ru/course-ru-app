@@ -1,11 +1,11 @@
 ﻿from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from main.views import index
 
 admin.autodiscover()
 
 urlpatterns = patterns('main.views',
-                       url(r'^$', 'index', name='index'),
                        url(r'^addcourse/$', 'addCourse', name='addCourse'),
                        url(r'^courses/(?P<courseId>\d+)/$', 'course', name='course'),
                        url(r'^courses/(?P<courseId>\d+)/addcourseoffering/$', 'addCourseOffering',

@@ -5,8 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'account/login.html'}),
-                       url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'account/logout.html'}),
+                       url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'account/sign_in.html'}),
+                       url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
                        url(r'^password_change/$', 'django.contrib.auth.views.password_change',
                            {'template_name': 'account/password_change_form.html'}),
                        url(r'^password_change/done/$', 'django.contrib.auth.views.password_change_done',
