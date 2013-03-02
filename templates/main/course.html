@@ -7,7 +7,7 @@
     <p>
         {{ Course.description }}
     </p>
-    <p>
+    <div>
         {% if CourseOfferingList %}
             Предложения курса:
             <ul>
@@ -20,7 +20,7 @@
         {% else %}
             Нет предложений курса
         {% endif %}
-    </p>
+    </div>
     <hr/>
     <p>
         <a href="{% url 'main.views.addCourseOffering' Course.id %}">Добавить предложение курса</a>
