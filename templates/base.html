@@ -40,17 +40,17 @@
                                 <img src="/static/geekuniversity.png" alt="geek university" width="700">
                             </a>
                         </div>
-                        <a href="about">О нас</a>
+                        <a href="/about">О нас</a>
                         {% if user.is_authenticated %}
-                            <h3 class="text-right">Привет, {{ user.username }}</h3>
-                            <a href="{% url 'accounts.views.personal' %}" class="pull-right">
-                                Личный кабинет
+                            <a href="{% url 'accounts.views.profile' %}" class="pull-right">
+                                {{ user.username }}
                             </a>
                             <a href="{% url 'django.contrib.auth.views.logout' %}" class="pull-right">
                                 Выйти
                             </a>
                         {% else %}
-                            <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right" style="width:200px;">
+                            <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right"
+                               style="width:200px;">
                                 Вход
                             </a>
                         {% endif %}
@@ -58,6 +58,15 @@
                 </div>
             </div>
             <div class="container">
+                <div class="row">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
                 {% block content %}
 
                 {% endblock %}
