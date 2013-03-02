@@ -40,16 +40,17 @@
                                 <img src="/static/geekuniversity.png" alt="geek university" width="700">
                             </a>
                         </div>
-                        <a href="about">О нас</a>
+                        <a href="/about">О нас</a>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'accounts.views.personal' %}" class="pull-right">
+                            <a href="{% url 'accounts.views.profile' %}" class="pull-right">
                                 {{ user.username }}
                             </a>
                             <a href="{% url 'django.contrib.auth.views.logout' %}" class="pull-right">
                                 Выйти
                             </a>
                         {% else %}
-                            <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right" style="width:200px;">
+                            <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right"
+                               style="width:200px;">
                                 Вход
                             </a>
                         {% endif %}
@@ -57,6 +58,15 @@
                 </div>
             </div>
             <div class="container">
+                <div class="row">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
                 {% block content %}
 
                 {% endblock %}
@@ -64,9 +74,9 @@
         </div>
         <div id="footer">
             <div class="container">
-                <div id="ul-wrapper" style="height: 20px; margin: 10px 0 10px 0;">
+                <div id="ul-wrapper" style="height: 20px; margin: 10px 0px 10px 0px;">
                     <ul class="footer-links" style="text-align: center;">
-                        <li style="display: inline; padding: 0 40px 0 0;">
+                        <li style="display: inline; padding: 0px 40px 0px 0px;">
                             <a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>
                             <!-- Диалог сохранения отзыва -->
                             <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
@@ -85,7 +95,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li style="display: inline; padding: 0 0 0 40px;">
+                        <li style="display: inline; padding: 0px 0px 0px 40px;">
                             <a href="Ссылка на подписку">Подписаться на новости</a>
                         </li>
                     </ul>
@@ -94,7 +104,7 @@
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
         <!-- use cdn or local script -->
-        <script src="/static/js/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="/static/js/bootstrap.js"></script>
     </body>
 </html>

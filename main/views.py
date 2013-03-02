@@ -19,6 +19,7 @@ def index(request, template_name='main/index.html'):
 def about(request, template_name='main/about.html'):
     return render(request, template_name)
 
+
 @login_required
 def course(request, courseId, template_name='main/course.html'):
     course = get_object_or_404(Course, pk=courseId)
@@ -35,7 +36,7 @@ def courseOffering(request, courseId, courseOfferingId, template_name='main/cour
 
 
 @login_required
-def personal(request, userId, template_name='main/personal.html'):
+def profile(request, userId, template_name='main/profile.html'):
     user = get_object_or_404(User, pk=userId)
     userProfile = user.userprofile
     return render(request, template_name, {'User': user, 'UserProfile': userProfile})
