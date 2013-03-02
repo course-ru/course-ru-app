@@ -12,14 +12,14 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 
-from account.forms import UserCreationForm
+from accounts.forms import UserCreationForm
 
 
 @csrf_protect
-def signup(request, template_name='account/signup_form.html', email_template_name='account/signup_email.html',
+def signup(request, template_name='accounts/signup_form.html', email_template_name='accounts/signup_email.html',
            signup_form=UserCreationForm, token_generator=default_token_generator, post_signup_redirect=None):
     if post_signup_redirect is None:
-        post_signup_redirect = reverse('account.views.signup_done')
+        post_signup_redirect = reverse('accounts.views.signup_done')
 
     if request.method == "POST":
         form = signup_form(request.POST)
@@ -41,14 +41,14 @@ def signup(request, template_name='account/signup_form.html', email_template_nam
     return render(request, template_name, {'form': form})
 
 
-def signup_done(request, template_name='account/signup_done.html'):
+def signup_done(request, template_name='accounts/signup_done.html'):
     return render(request, template_name)
 
 
 def signup_confirm(request, uidb36=None, token=None, token_generator=default_token_generator,
                    post_signup_redirect=None):
     if post_signup_redirect is None:
-        post_signup_redirect = reverse('account.views.signup_complete')
+        post_signup_redirect = reverse('accounts.views.signup_complete')
 
     try:
         uid_int = base36_to_int(uidb36)
@@ -69,12 +69,12 @@ def signup_confirm(request, uidb36=None, token=None, token_generator=default_tok
     return HttpResponseRedirect(post_signup_redirect)
 
 
-def signup_complete(request, template_name='account/signup_complete.html'):
+def signup_complete(request, template_name='accounts/signup_complete.html'):
     return render_to_response(template_name,
                               context_instance=RequestContext(request, {'login_url': settings.LOGIN_URL}))
 
 
-def personal(request, template_name='account/personal.html'):
+def personal(request, template_name='accounts/personal.html'):
     user = request.user
     userProfile = user.userprofile
     userCourseOfferings = userProfile.courses.all()
@@ -82,7 +82,7 @@ def personal(request, template_name='account/personal.html'):
                   {'User': user, 'UserProfile': userProfile, 'UserCourseOfferings': userCourseOfferings})
 
 
-def denied(request, template_name='account/noaccess.html'):
+def denied(request, template_name='accounts/noaccess.html'):
     return render(request, template_name)
 
 

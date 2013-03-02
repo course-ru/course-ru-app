@@ -4,17 +4,20 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
-from account.views import *
+from accounts.views import *
 from main.models import *
 from main.forms import *
 
-denied = '/account/denied/'
+denied = '/accounts/denied/'
 
 
 def index(request, template_name='main/index.html'):
     courseList = Course.objects.all()
     return render(request, template_name, {'CourseList': courseList})
 
+
+def about(request, template_name='main/about.html'):
+    return render(request, template_name)
 
 @login_required
 def course(request, courseId, template_name='main/course.html'):

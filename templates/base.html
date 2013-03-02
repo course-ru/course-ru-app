@@ -40,20 +40,21 @@
                                 <img src="/static/geekuniversity.png" alt="geek university" width="700">
                             </a>
                         </div>
+                        <a href="about">О нас</a>
+                        {% if user.is_authenticated %}
+                            <h3 class="text-right">Привет, {{ user.username }}</h3>
+                            <a href="{% url 'accounts.views.personal' %}" class="pull-right">
+                                Личный кабинет
+                            </a>
+                            <a href="{% url 'django.contrib.auth.views.logout' %}" class="pull-right">
+                                Выйти
+                            </a>
+                        {% else %}
+                            <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right" style="width:200px;">
+                                Вход
+                            </a>
+                        {% endif %}
                     </div>
-                    {% if user.is_authenticated %}
-                        <h3 class="text-right">Привет, {{ user.username }}</h3>
-                        <a href="{% url 'account.views.personal' %}" class="pull-right">
-                            Личный кабинет
-                        </a>
-                        <a href="{% url 'django.contrib.auth.views.logout' %}" class="pull-right">
-                            Выйти
-                        </a>
-                    {% else %}
-                        <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right" style="width:200px;">
-                            Вход
-                        </a>
-                    {% endif %}
                 </div>
             </div>
             <div class="container">

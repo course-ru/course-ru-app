@@ -113,7 +113,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     #'django.contrib.admindocs',
     'main',
-    'account',
+    'accounts',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -147,8 +147,8 @@ LOGGING = {
 
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
-#LOGIN_URL = reverse('account.login')
-#LOGOUT_URL = reverse('account.logout')
+#LOGIN_URL = reverse('accounts.login')
+#LOGOUT_URL = reverse('accounts.logout')
 LOGIN_REDIRECT_URL = reverse('index')
 
 EMAIL_HOST = 'smtp.gmail.com'

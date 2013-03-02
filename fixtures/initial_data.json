@@ -104,18 +104,18 @@
         "pk": 1,
         "model": "auth.user",
         "fields": {
-            "username": "drewn",
+            "username": "admin",
             "first_name": "",
             "last_name": "",
             "is_active": true,
             "is_superuser": true,
             "is_staff": true,
-            "last_login": "2013-02-26T19:35:31Z",
+            "last_login": "2013-03-02T00:42:35.474Z",
             "groups": [],
             "user_permissions": [],
-            "password": "pbkdf2_sha256$10000$bM2hlKLFABiG$e+btnP1N1nKUowgAybcTEucPnWLJLIWTAOeM55QDoSk=",
-            "email": "avrybintsev@gmail.com",
-            "date_joined": "2013-02-17T12:58:37Z"
+            "password": "pbkdf2_sha256$10000$8S3ciLdxj3pF$OmotM5N4VM3fTNu9CkxDLE9VRwyqY4DfhZev9gps+xE=",
+            "email": "admin@admin.com",
+            "date_joined": "2013-03-02T00:42:35.474Z"
         }
     },
     {
@@ -164,7 +164,7 @@
         "fields": {
             "status": "",
             "courses": [],
-            "user": ["drewn"]
+            "user": ["admin"]
         }
     },
     {
