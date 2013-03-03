@@ -1,3 +1,10 @@
 #wrap > .container {
     padding-top: 160px;
 }
+
+#header
+{
+    color: #444444;
+    font-size: 19px;
+    font-family: "Helvetica Neue";
+}

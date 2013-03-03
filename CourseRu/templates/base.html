@@ -36,9 +36,12 @@
                             <a href="{% url 'index' %}">
                                 <img src="/static/logo.png" alt="logo" width="120">
                             </a>
+                            <div id="header">Geek University</div>
+                            {% comment %}
                             <a href="{% url 'index' %}">
                                 <img src="/static/geekuniversity.png" alt="geek university" width="700">
                             </a>
+                            {% endcomment %}
                         </div>
                         <a href="/about">О нас</a>
                         {% if user.is_authenticated %}
