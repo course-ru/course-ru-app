@@ -8,7 +8,7 @@ from accounts.views import *
 from main.models import *
 from main.forms import *
 
-denied = '/accounts/denied/'
+denied = '/templates/denied/'
 
 
 def index(request, template_name='main/index.html'):
@@ -53,24 +53,6 @@ def addCourse(request, template_name='main/addcourse.html', addcourse_form=AddCo
             return HttpResponseRedirect(post_addcourse_redirect)
     else:
         form = addcourse_form()
-    return render(request, template_name, {'form': form})
-
-
-@permission_required('main.add_courseoffering', login_url=denied)
-def addCourseOffering(request, courseId, addcourseoffering_form=AddCourseOfferingForm,
-                      template_name='main/addcourseoffering.html', post_addcourseoffering_redirect=None):
-    course = get_object_or_404(Course, pk=courseId)
-    if request.method == 'POST':
-        form = addcourseoffering_form(request.POST)
-        if form.is_valid():
-            courseOffering = form.save()
-            course = courseOffering.course
-            if post_addcourseoffering_redirect is None:
-                post_addcourseoffering_redirect = reverse('main.views.courseOffering', kwargs={'courseId': course.id,
-                                                                                               'courseOfferingId': courseOffering.id})
-            return HttpResponseRedirect(post_addcourseoffering_redirect)
-    else:
-        form = addcourseoffering_form(initial={'course': course})
     return render(request, template_name, {'form': form})
 
 

@@ -151,8 +151,8 @@ LOGGING = {
 
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
-#LOGIN_URL = reverse('accounts.login')
-#LOGOUT_URL = reverse('accounts.logout')
+#LOGIN_URL = reverse('templates.login')
+#LOGOUT_URL = reverse('templates.logout')
 LOGIN_REDIRECT_URL = reverse('index')
 
 EMAIL_HOST = 'smtp.gmail.com'

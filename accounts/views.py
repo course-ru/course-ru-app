@@ -17,7 +17,7 @@ from accounts.forms import UserCreationForm
 
 
 @csrf_protect
-def signup(request, template_name='accounts/signup.html', email_template_name='accounts/signup_email.html',
+def signup(request, template_name='templates/signup.html', email_template_name='templates/signup_email.html',
            signup_form=UserCreationForm, token_generator=default_token_generator, post_signup_redirect=None):
     if post_signup_redirect is None:
         post_signup_redirect = reverse('index')
@@ -68,15 +68,14 @@ def signup_confirm(request, uidb36=None, token=None, token_generator=default_tok
     return HttpResponseRedirect(post_signup_redirect)
 
 
-def profile(request, template_name='accounts/profile.html'):
+def profile(request):
     user = request.user
-    userProfile = user.userprofile
-    userCourseOfferings = userProfile.courses.all()
-    return render(request, template_name,
-                  {'User': user, 'UserProfile': userProfile, 'UserCourseOfferings': userCourseOfferings})
+    user_profile = user.userprofile
+    user_courses = user_profile.courses.all()
+    return render(request, {'user': user, 'user_profile': user_profile, 'courses': user_courses})
 
 
-def denied(request, template_name='accounts/noaccess.html'):
+def denied(request, template_name='templates/noaccess.html'):
     return render(request, template_name)
 
 
@@ -87,5 +86,4 @@ def init(request):
     students_group.permissions.add(Permission.objects.get(codename='can_apply'))
     teachers_group, created = Group.objects.get_or_create(name='Teachers')
     teachers_group.permissions.add(Permission.objects.get(codename='add_course'))
-    teachers_group.permissions.add(Permission.objects.get(codename='add_courseoffering'))
     return HttpResponse('Groups have been initialized')
