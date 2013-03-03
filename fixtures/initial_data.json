@@ -53,6 +53,39 @@
     },
     {
         "pk": 1,
+        "model": "main.lecture",
+        "fields": {
+            "course": 1,
+            "youtube_video_id": "p-WXiqrzAf8",
+            "name": "django: Web Development for Perfectionists with Deadlines",
+            "order": 2,
+            "date": "2013-03-04"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "main.lecture",
+        "fields": {
+            "course": 1,
+            "youtube_video_id": "t6pdG1oWFX4",
+            "name": "Some Python Integrated Development Environments",
+            "order": 1,
+            "date": "2013-03-04"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "main.lecture",
+        "fields": {
+            "course": 1,
+            "youtube_video_id": "v1gTI4BOPUw",
+            "name": "Google I/O 2008 - Python, Django, and App Engine",
+            "order": 3,
+            "date": "2013-03-04"
+        }
+    },
+    {
+        "pk": 1,
         "model": "auth.group",
         "fields": {
             "name": "students",
@@ -81,7 +114,7 @@
             "is_active": true,
             "is_superuser": true,
             "is_staff": true,
-            "last_login": "2013-03-03T15:44:35.096Z",
+            "last_login": "2013-03-02T00:42:35.474Z",
             "groups": [],
             "user_permissions": [],
             "password": "pbkdf2_sha256$10000$8S3ciLdxj3pF$OmotM5N4VM3fTNu9CkxDLE9VRwyqY4DfhZev9gps+xE=",
@@ -153,7 +186,7 @@
         "pk": 1,
         "model": "main.userprofile",
         "fields": {
-            "courses": [1, 2],
+            "courses": [],
             "user": ["admin"]
         }
     },

@@ -10,8 +10,8 @@
         </div>
         <div class="span4">
             <div>{{ course.organisation }}</div>
-            <div>{{ course.startDate }} - {{ course.endDate }}</div>
-            <a href="{% url 'main.views.course' course.id%}" class="btn">Вступить</a>
+            <div>{{ course.start_date }} - {{ course.end_date }}</div>
+            <a href="{% url 'student.views.apply_for_course' course.id%}" class="btn">Вступить</a>
         </div>
     </div>
 {% endblock %}

@@ -8,6 +8,8 @@ urlpatterns = patterns('',
                        url(r'^$', 'main.views.index', name='index'),
                        url(r'^', include('main.urls')),
                        url(r'^accounts/', include('accounts.urls')),
+                       url(r'^student/', include('student.urls')),
+                       url(r'^instructor/', include('instructor.urls')),
                        url(r'^admin/', include(admin.site.urls)),
 )
 

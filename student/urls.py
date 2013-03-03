@@ -4,11 +4,9 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns('main.views',
-                       url(r'^index/$', 'index'),
-                       url(r'^about/$', 'about', name='about'),
-                       url(r'^courses/(?P<course_id>\d+)/$', 'course', name='course'),
+urlpatterns = patterns('student.views',
                        url(r'^courses/(?P<course_id>\d+)/apply/$', 'apply_for_course', name='apply_for_course'),
+                       url(r'^courses/(?P<course_id>\d+)/$', 'course', name='course')
 )
 
 urlpatterns += patterns('', url(r'^admin/', include(admin.site.urls)))

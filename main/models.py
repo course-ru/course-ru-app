@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 
 class Course(models.Model):
     name = models.CharField(max_length=100)
-    short_summary = models.TextField(blank=True)
+    short_summary = models.TextField(max_length=100)
     description = models.TextField()
     organisation = models.CharField(max_length=100)
     logo = models.FileField(upload_to='logos')
@@ -24,8 +24,9 @@ class Course(models.Model):
 
 class Lecture(models.Model):
     name = models.CharField(max_length=100)
-    youtube_link = models.CharField(max_length=200)
-    order = models.IntegerField()
+    youtube_video_id = models.CharField(max_length=32)
+    order = models.IntegerField(unique=True)
+    date = models.DateField()
     course = models.ForeignKey(Course)
 
     def __repr__(self):

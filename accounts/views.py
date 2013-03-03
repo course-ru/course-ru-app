@@ -1,5 +1,6 @@
 # coding=utf-8
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse, Http404
@@ -77,6 +78,13 @@ def profile(request):
 
 def denied(request, template_name='templates/noaccess.html'):
     return render(request, template_name)
+
+
+@login_required
+def profile(request, user_id, template_name='main/profile.html'):
+    user = get_object_or_404(User, pk=user_id)
+    user_profile = user.userprofile
+    return render(request, template_name, {'User': user, 'UserProfile': user_profile})
 
 
 def init(request):
