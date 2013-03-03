@@ -1,0 +1,145 @@
+[
+    {
+        "pk": 1,
+        "model": "main.course",
+        "fields": {
+            "name": "Web-\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043d\u0430 Django",
+            "end_date": "2013-03-30",
+            "organisation": "Course.ru team",
+            "short_summary": "The Web framework for perfectionists (with deadlines). Django makes it easier to build better Web apps more quickly and with less code.",
+            "logo": "logos/hdr_logo_1.gif",
+            "start_date": "2013-03-03",
+            "description": "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.\r\n\r\nDeveloped by a fast-moving online-news operation, Django was designed to handle two challenges: the intensive deadlines of a newsroom and the stringent requirements of the experienced Web developers who wrote it. It lets you build high-performing, elegant Web applications quickly.\r\n\r\nDjango focuses on automating as much as possible and adhering to the DRY principle."
+        }
+    },
+    {
+        "pk": 1,
+        "model": "auth.group",
+        "fields": {
+            "name": "students",
+            "permissions": [
+                ["can_apply", "main", "course"]
+            ]
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.group",
+        "fields": {
+            "name": "instructors",
+            "permissions": [
+                ["add_course", "main", "course"]
+            ]
+        }
+    },
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2013-03-02T00:42:35.474Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$10000$8S3ciLdxj3pF$OmotM5N4VM3fTNu9CkxDLE9VRwyqY4DfhZev9gps+xE=",
+            "email": "admin@admin.com",
+            "date_joined": "2013-03-02T00:42:35.474Z"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.user",
+        "fields": {
+            "username": "ivan",
+            "first_name": "\u0418\u0432\u0430\u043d",
+            "last_name": "\u0418\u0432\u0430\u043d\u043e\u0432",
+            "is_active": true,
+            "is_superuser": false,
+            "is_staff": false,
+            "last_login": "2013-03-03T12:10:59Z",
+            "groups": [
+                ["students"]
+            ],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$10000$OP1keE7IA6RT$akLYXa8Tow6+e4EgtrcWXno9CDtnq9O7JAnexFNqV8I=",
+            "email": "ivan@course.ru",
+            "date_joined": "2013-03-03T12:10:59Z"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "auth.user",
+        "fields": {
+            "username": "student",
+            "first_name": "student",
+            "last_name": "student",
+            "is_active": true,
+            "is_superuser": false,
+            "is_staff": false,
+            "last_login": "2013-03-03T12:14:27Z",
+            "groups": [
+                ["students"]
+            ],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$10000$rH764iNgHv9X$/Ge5jFVYe3D7NE32FTtz++lQmfrCxbjgrAINJ4fBUF0=",
+            "email": "student@course.ru",
+            "date_joined": "2013-03-03T12:14:27Z"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "auth.user",
+        "fields": {
+            "username": "teacher",
+            "first_name": "teacher",
+            "last_name": "teacher",
+            "is_active": true,
+            "is_superuser": false,
+            "is_staff": false,
+            "last_login": "2013-03-03T12:15:06Z",
+            "groups": [
+                ["instructors"]
+            ],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$10000$4labTcOCqcga$CPkWE2vTvsN1T04/BcaNIKPYy1FfW/1RwyYL5Wi254c=",
+            "email": "teacher@course.ru",
+            "date_joined": "2013-03-03T12:15:06Z"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "main.userprofile",
+        "fields": {
+            "courses": [],
+            "user": ["admin"]
+        }
+    },
+    {
+        "pk": 2,
+        "model": "main.userprofile",
+        "fields": {
+            "courses": [],
+            "user": ["ivan"]
+        }
+    },
+    {
+        "pk": 3,
+        "model": "main.userprofile",
+        "fields": {
+            "courses": [],
+            "user": ["student"]
+        }
+    },
+    {
+        "pk": 4,
+        "model": "main.userprofile",
+        "fields": {
+            "courses": [],
+            "user": ["teacher"]
+        }
+    }
+]
