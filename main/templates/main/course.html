@@ -1,28 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}CourseRu | Курс {{ Course.name }}{% endblock %}
+{% block title %}Курс {{ course.name }}{% endblock %}
 
 {% block content %}
-    <h1>{{ Course.name }}</h1>
-    <p>
-        {{ Course.description }}
-    </p>
-    <div>
-        {% if CourseOfferingList %}
-            Предложения курса:
-            <ul>
-                {% for courseOffering in CourseOfferingList %}
-                    <li>
-                        <a href="{% url 'main.views.courseOffering' Course.id courseOffering.id %}">{{ courseOffering.date }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            Нет предложений курса
-        {% endif %}
+    <div class="row">
+        <div class="span8">
+            <h1>{{ course.name }}</h1>
+            <div>{{ course.description }}</div>
+        </div>
+        <div class="span4">
+            <div>{{ course.organisation }}</div>
+            <div>{{ course.startDate }} - {{ course.endDate }}</div>
+            <a href="{% url 'main.views.course' course.id%}" class="btn">Вступить</a>
+        </div>
     </div>
-    <hr/>
-    <p>
-        <a href="{% url 'main.views.addCourseOffering' Course.id %}">Добавить предложение курса</a>
-    </p>
 {% endblock %}

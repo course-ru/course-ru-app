@@ -5,14 +5,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('main.views',
-                       url(r'^addcourse/$', 'addCourse', name='addCourse'),
-                       url(r'^courses/(?P<courseId>\d+)/$', 'course', name='course'),
-                       url(r'^courses/(?P<courseId>\d+)/addcourseoffering/$', 'addCourseOffering',
-                           name='addCourseOffering'),
-                       url(r'^courses/(?P<courseId>\d+)/(?P<courseOfferingId>\d+)/$', 'courseOffering',
-                           name='courseOffering'),
-                       url(r'^courses/(?P<courseId>\d+)/(?P<courseOfferingId>\d+)/apply/$', 'courseOfferingApply',
-                           name='courseOfferingApply'),
+                       url(r'^index/$', 'index'),
+                       url(r'^about/$', 'about', name='about'),
+                       url(r'^courses/new$', 'add_course', name='add_course'),
+                       url(r'^courses/(?P<course_id>\d+)/$', 'course', name='course'),
+                       url(r'^courses/(?P<course_id>\d+)/apply/$', 'apply_for_course', name='apply_for_course'),
 )
 
 urlpatterns += patterns('', url(r'^admin/', include(admin.site.urls)))

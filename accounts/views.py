@@ -70,9 +70,9 @@ def signup_confirm(request, uidb36=None, token=None, token_generator=default_tok
 
 def profile(request):
     user = request.user
-    user_profile = user.userprofile
-    user_courses = user_profile.courses.all()
-    return render(request, {'user': user, 'user_profile': user_profile, 'courses': user_courses})
+    profile = user.userprofile
+    courses = profile.courses.all()
+    return render(request, {'user': user, 'profile': profile, 'courses': courses})
 
 
 def denied(request, template_name='templates/noaccess.html'):

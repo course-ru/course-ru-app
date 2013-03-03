@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}CourseRu: личный кабинет{% endblock %}
+{% block title %}{{ User.username }}{% endblock %}
 
 {% block content %}
     <div>
         Пользователь <b>{{ User.username }}</b><br>
-        {{ UserProfile.status }}
         <a href="{% url 'django.contrib.auth.views.password_change' %}">Сменить пароль</a>
         <hr/>
         <div>
-            {% if UserCourseOfferings %}
+            {% if courses %}
                 Список курсов:
                 <ul>
-                    {% for userCourseOffering in UserCourseOfferings %}
+                    {% for course in courses %}
                         <li>
-                            <a href="{% url main.views.courseOffering userCourseOffering.course.id userCourseOffering.id %}">{{ userCourseOffering.course.name }}</a> {{ userCourseOffering.date }}
+                            <a href="{% url main.views.course course.id%}">
+                                {{ course.name }}
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>

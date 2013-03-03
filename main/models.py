@@ -7,23 +7,24 @@ class Course(models.Model):
     name = models.CharField(max_length=100)
     short_summary = models.TextField(blank=True)
     description = models.TextField()
-    organisation = models.CharField()
-    logo = models.ImageField()
-    date = models.DateField()
+    organisation = models.CharField(max_length=100)
+    logo = models.FileField(upload_to='logos')
+    start_date = models.DateField()
+    end_date = models.DateField()
 
     class Meta:
-        permissions = (('can_apply', 'Can apply for Course Offering'),)
+        permissions = (('can_apply', 'Can apply for Course'),)
 
     def __repr__(self):
-        return "%s %s" % (self.course.name, str(self.date))
+        return "%s %s" % (self.name, str(self.start_date))
 
     def __unicode__(self):
-        return unicode("%s %s" % (self.course.name, str(self.date)))
+        return unicode("%s %s" % (self.name, str(self.start_date)))
 
 
 class Lecture(models.Model):
     name = models.CharField(max_length=100)
-    youtube_link = models.CharField
+    youtube_link = models.CharField(max_length=200)
     order = models.IntegerField()
     course = models.ForeignKey(Course)
 
