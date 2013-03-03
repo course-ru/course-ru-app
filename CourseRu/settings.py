@@ -6,7 +6,6 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
-BASE = os.path.dirname(PROJECT_PATH)
 
 ADMINS = (
     ('avrybintsev', 'avrybintsev@gmail.com'),
@@ -43,7 +42,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(BASE, 'media')
+MEDIA_ROOT = './media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -166,7 +165,7 @@ EMAIL_HOST_PASSWORD = 'courserupassword'
 EMAIL_USE_TLS = True
 
 FIXTURE_DIRS = (
-    os.path.join(PROJECT_PATH, 'fixtures'),
+    './fixtures/',
 )
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
