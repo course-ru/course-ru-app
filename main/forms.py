@@ -28,3 +28,8 @@ class AddCourseForm(ModelForm):
         if commit:
             course.save()
         return course
+
+
+class FeedbackForm(ModelForm):
+    class Meta:
+        model = Feedback

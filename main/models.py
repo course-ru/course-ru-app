@@ -36,6 +36,16 @@ class Lecture(models.Model):
         return unicode(self.name)
 
 
+class Feedback(models.Model):
+    body = models.TextField()
+
+    def __repr__(self):
+        return self.body
+
+    def __unicode__(self):
+        return "feedback %s" % self.body
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True)
     courses = models.ManyToManyField(Course, blank=True)

@@ -80,9 +80,12 @@
                 <div id="ul-wrapper" style="height: 20px; margin: 10px 0 10px 0;">
                     <ul class="footer-links" style="text-align: center;">
                         <li style="display: inline; padding: 0 40px 0 0;">
-                            <a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>
+                            <a href="{% url 'main.views.feedback' %}">Отзыв о работе сайта</a>
+
+                            {% comment %}Later add modal view.{% endcomment %}
+                            {% comment %}<a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>{% endcomment %}
                             <!-- Диалог сохранения отзыва -->
-                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+{% comment %}                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
@@ -96,11 +99,11 @@
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
                                     <button class="btn btn-primary">Отослать</button>
                                 </div>
-                            </div>
+                            </div>{% endcomment %}
                         </li>
-                        <li style="display: inline; padding: 0 0 0 40px;">
+                        {% comment %}<li style="display: inline; padding: 0 0 0 40px;">
                             <a href="Ссылка на подписку">Подписаться на новости</a>
-                        </li>
+                        </li>{% endcomment %}
                     </ul>
                 </div>
             </div>
