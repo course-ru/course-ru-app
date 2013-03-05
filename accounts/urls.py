@@ -1,11 +1,13 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from accounts.forms import ExtendedAuthenticationForm
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'accounts/login.html'}),
+                       url(r'^login/$', 'django.contrib.auth.views.login',
+                           {'template_name': 'accounts/login.html', 'authentication_form': ExtendedAuthenticationForm}),
                        url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
                        url(r'^password_change/$', 'django.contrib.auth.views.password_change',
                            {'template_name': 'accounts/password_change_form.html'}),

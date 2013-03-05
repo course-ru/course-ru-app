@@ -1,18 +1,11 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block title %}Отзыв о работе сайта{% endblock %}
 
 {% block content %}
-    <h1>Отзыв о работе сайта</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <div>
-                <textarea rows="6" class="span6" name='{{ field.name }}'
-                          placeholder='Текст сообщения'>{{ field.value|default_if_none:"" }}</textarea>
-                <span class="help-inline">{{ field.errors }}</span>
-            </div>
-        {% endfor %}
-        <input type="submit" class="btn btn-primary" value="Отправить"/>
-    </form>
+    <div class='row'>
+        <div class='span12'>
+            {% include 'horizontal_form.html' with form=form legend='Отзыв о работе сайта' submit='Отправить' %}
+        </div>
+    </div>
 {% endblock %}

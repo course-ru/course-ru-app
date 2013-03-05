@@ -1,11 +1,23 @@
+# coding=utf-8
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
+from django.forms import TextInput
 from django.utils.http import int_to_base36
 from django.template import Context, loader
 from django.contrib.auth.models import Group
 from django import forms
 from django.core.mail import send_mail
+
+
+class ExtendedAuthenticationForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(ExtendedAuthenticationForm, self).__init__(*args, **kwargs)
+        self.fields['username'].label = u'Имя пользователя'
+        self.fields['username'].widget.attrs['placeholder'] = u'Имя пользователя'
+        self.fields['password'].label = u'Пароль'
+        self.fields['password'].widget.attrs['placeholder'] = u'Пароль'
 
 
 class UserCreationForm(forms.ModelForm):

@@ -1,25 +1,18 @@
 {% extends "base.html" %}
 
+{% block title %}Вход{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="span6">
-            {% if form.errors %}
-                <p>Ошибка авторизации</p>
-            {% endif %}
-            <form action="{% url 'django.contrib.auth.views.login' %}" method="post">
-                {% csrf_token %}
-                {% for field in form %}
-                    <p>
-                        {{ field.label_tag }}: {{ field }}
-                        {{ field.errors }}
-                    </p>
-                {% endfor %}
-                <p><input type="submit" value="Войти"/></p>
-                <input type="hidden" name="next" value="{{ next }}"/>
-            </form>
-            <a href="{% url 'django.contrib.auth.views.password_reset' %}" class="btn pull-right" style="width:200px;">
-                Восстановление пароля
-            </a>
+            {% include 'horizontal_form.html' with form=form legend='Вход' submit='Войти'  %}
+            <div class='control-group'>
+                <div class='controls'>
+                    <a href="{% url 'django.contrib.auth.views.password_reset' %}" class="offset2">
+                        Восстановление пароля
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="span6">
             <a href="{% url 'accounts.views.signup' %}" class="btn pull-right" style="width:200px;">

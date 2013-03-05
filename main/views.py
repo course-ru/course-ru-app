@@ -1,27 +1,24 @@
 # coding=utf-8
 from django.contrib import messages
-from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, render, redirect
-from django.shortcuts import render_to_response
-from django.template.defaultfilters import default_if_none
 from main.forms import FeedbackForm
 from main.models import *
 
 denied = '/templates/denied/'
 
 
-def index(request, template_name='main/index.html'):
+def index(request):
     courses = Course.objects.all().order_by('start_date')
-    return render(request, template_name, {'courses': courses})
+    return render(request, 'main/index.html', {'courses': courses})
 
 
-def about(request, template_name='main/about.html'):
-    return render(request, template_name)
+def about(request):
+    return render(request, 'main/about.html')
 
 
-def course(request, course_id, template_name='main/course.html'):
+def course(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
-    return render(request, template_name, {'course': course})
+    return render(request, 'main/course.html', {'course': course})
 
 
 def feedback(request):
