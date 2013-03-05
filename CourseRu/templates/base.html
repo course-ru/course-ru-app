@@ -63,9 +63,9 @@
             <div class="container">
                 <div class="row">
                     {% if messages %}
-                        <ul class="messages">
+                        <ul class="messages unstyled">
                             {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
