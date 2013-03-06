@@ -27,65 +27,86 @@
               href="../assets/ico/apple-touch-icon-144-precomposed.png">
     </head>
 
+    {% comment %}
+
+                <div id="ul-wrapper" style="height: 20px; margin: 10px 0 10px 0;">
+                    <ul class="footer-links" style="text-align: center;">
+                        <li style="display: inline; padding: 0 40px 0 0;">
+                            <a href="{% url 'main.views.feedback' %}" class="btn btn-link">Отзыв о работе сайта</a>
+                            <a href="{% url 'main.views.about' %}" class="btn btn-link">О нас</a>{% endcomment %}
     <body>
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container">
-                        <div class="brand">
-                            <a href="{% url 'index' %}">
-                                <img src="/static/logo.png" alt="logo" width="120">
-                            </a>
-                            <div id="header">Geek University</div>
-                            {% comment %}
-                            <a href="{% url 'index' %}">
-                                <img src="/static/geekuniversity.png" alt="geek university" width="700">
-                            </a>
-                            {% endcomment %}
-                        </div>
-                        <a href="/about">О нас</a>
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'accounts.views.profile' %}" class="pull-right">
-                                {{ user.username }}
-                            </a>
-                            <a href="{% url 'django.contrib.auth.views.logout' %}" class="pull-right">
-                                Выйти
-                            </a>
-                        {% else %}
-                            <a href="{% url 'django.contrib.auth.views.login' %}" class="pull-right"
-                               style="width:200px;">
-                                Вход
-                            </a>
-                        {% endif %}
+                        <ul class="inline" style="text-align: right;">
+                            <li>
+                                <a href="{% url 'main.views.feedback' %}" class="btn btn-link">Отзыв о работе сайта</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'main.views.about' %}" class="btn btn-link">О нас</a>
+                            </li>
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a href="{% url 'accounts.views.profile' %}" class="btn btn-link">
+                                        {{ user.username }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'django.contrib.auth.views.logout' %}" class="btn btn-link">
+                                        Выйти
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{% url 'django.contrib.auth.views.login' %}" class="btn btn-link">
+                                        Вход
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    {% if messages %}
-                        <ul class="messages unstyled">
-                            {% for message in messages %}
-                                <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+                <header class="container clearfix" style="padding-top: 20px;margin-bottom: 30px;">
+                    <div style="float: left; display: block;">
+                        <a href="{% url 'index' %}" id="logo">
+                            <img src="/static/logo.png" alt="logo" width="120">
+                        </a>
+                    </div>
+                    <div style="float: left; padding-left: 50px; font-family: 'Helvetica Neue'; color: #444444; font-size: 60px;">
+                        <h1 id="header">Geek University</h1>
+
+                        <p class="lead">We will geek u</p>
+                    </div>
+                </header>
+                <div class="container">
+                    <div class="row">
+                        {% if messages %}
+                            <ul class="messages unstyled">
+                                {% for message in messages %}
+                                    <li{% if message.tags %}
+                                        class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    {% block content %}
+
+                    {% endblock %}
                 </div>
-                {% block content %}
-
-                {% endblock %}
             </div>
-        </div>
-        <div id="footer">
-            <div class="container">
-                <div id="ul-wrapper" style="height: 20px; margin: 10px 0 10px 0;">
-                    <ul class="footer-links" style="text-align: center;">
-                        <li style="display: inline; padding: 0 40px 0 0;">
-                            <a href="{% url 'main.views.feedback' %}">Отзыв о работе сайта</a>
+            {% comment %}        <div id="footer">
+                        <div class="container">
+                            <div id="ul-wrapper" style="height: 20px; margin: 10px 0 10px 0;">
+                                <ul class="footer-links" style="text-align: center;">
+                                    <li style="display: inline; padding: 0 40px 0 0;">
+                                        <a href="{% url 'main.views.feedback' %}" class="btn btn-link">Отзыв о работе сайта</a>
+                                        <a href="{% url 'main.views.about' %}" class="btn btn-link">О нас</a>
 
-                            {% comment %}Later add modal view.{% endcomment %}
-                            {% comment %}<a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>{% endcomment %}
+                                        {% endcomment %}{% comment %}Later add modal view.{% endcomment %}{% comment %}
+                            {% endcomment %}{% comment %}<a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>{% endcomment %}{% comment %}
                             <!-- Диалог сохранения отзыва -->
-{% comment %}                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+                            {% endcomment %}{% comment %}                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
@@ -99,18 +120,18 @@
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
                                     <button class="btn btn-primary">Отослать</button>
                                 </div>
-                            </div>{% endcomment %}
+                            </div>{% endcomment %}{% comment %}
                         </li>
-                        {% comment %}<li style="display: inline; padding: 0 0 0 40px;">
+                        {% endcomment %}{% comment %}<li style="display: inline; padding: 0 0 0 40px;">
                             <a href="Ссылка на подписку">Подписаться на новости</a>
-                        </li>{% endcomment %}
+                        </li>{% endcomment %}{% comment %}
                     </ul>
                 </div>
             </div>
-        </div>
-        <!-- Placed at the end of the document so the pages load faster -->
-        <!-- use cdn or local script -->
-        <script src="/static/js/jquery-1.9.1.js"></script>
-        <script src="/static/js/bootstrap.js"></script>
+        </div>{% endcomment %}
+            <!-- Placed at the end of the document so the pages load faster -->
+            <!-- use cdn or local script -->
+            <script src="/static/js/jquery-1.9.1.js"></script>
+            <script src="/static/js/bootstrap.js"></script>
     </body>
 </html>
