@@ -4,25 +4,27 @@
 
 {% block content %}
     <div class="row">
-        <div class="span6">
-            {% include 'horizontal_form.html' with form=form legend='Вход' submit='Войти'  %}
-            <div class='control-group'>
-                <div class='controls'>
-                    <a href="{% url 'django.contrib.auth.views.password_reset' %}" class="offset2">
-                        Восстановление пароля
+        <form action='' method='post' class='form-horizontal'>
+            <fieldset>
+                <legend>Вход</legend>
+                <div class="span6" style="border-right: 1px solid #e5e5e5;">
+                    {% include 'form_fields.html' with form=form %}
+                    <div class='control-group'>
+                        <div class='controls'>
+                            <button type='submit' class='btn btn-primary'>Войти</button>
+                            <a href="{% url 'django.contrib.auth.views.password_reset' %}" class="btn btn-link">
+                                Восстановление пароля
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="span5">
+                    <span>Нет аккаунта?</span>
+                    <a href="{% url 'accounts.views.signup' %}">
+                        Зарегистрируйтесь
                     </a>
                 </div>
-            </div>
-        </div>
-        <div class="span6">
-            <a href="{% url 'accounts.views.signup' %}" class="btn pull-right" style="width:200px;">
-                Зарегистрироваться
-            </a>
-        </div>
+            </fieldset>
+        </form>
     </div>
 {% endblock %}
-
-
-<a href="{% url 'django.contrib.auth.views.password_reset' %}" class="pull-right"
-   style="width:200px;">Сброс пароля(убрать отсюда)</a>
-<a href="{% url 'accounts.views.signup' %}" class="pull-right" style="width:200px;">Зарегистрироваться</a>

@@ -1,16 +1,7 @@
 <form action='{{ action }}' method='post' class='form-horizontal'>
     <fieldset>
         <legend>{{ legend }}</legend>
-        {% csrf_token %}
-        {% for field in form %}
-            <div class='control-group {%if field.errors %}error{% endif %}'>
-                <label class='control-label' for='{{ field.name }}'>{{ field.label }}</label>
-                <div class='controls'>
-                    {{ field }}
-                    <span class='help-inline'>{{ field.errors }}</span>
-                </div>
-            </div>
-        {% endfor %}
+        {% include 'form_fields.html' with form=form %}
         <div class='control-group'>
             <div class='controls'>
                 <button type='submit' class='btn btn-primary'>{{ submit }}</button>

@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 
+{% block title %}Регистрация{% endblock %}
+
 {% block content %}
     <div class="row">
-        <div class="span6">
-            <form action="" method="post">
-                {% csrf_token %}
-                {% for field in form %}
-                    <p>
-                        {{ field.label_tag }}: {{ field }}
-                        {{ field.errors }}
-                    </p>
-                {% endfor %}
-                <p>
-                    <input type="submit" value="Зарегистрироваться"/>
-                </p>
-            </form>
-        </div>
-        <div class="span6">
-            <a href="{% url 'django.contrib.auth.views.login' %}" class="btn pull-right" style="width:200px;">
-                Вход
-            </a>
-        </div>
+        <form action='' method='post' class='form-horizontal'>
+            <fieldset>
+                <legend>Регистрация</legend>
+                <div class="span6" style="border-right: 1px solid #e5e5e5;">
+                    {% include 'form_fields.html' with form=form %}
+                    <div class='control-group'>
+                        <div class='controls'>
+                            <button type='submit' class='btn btn-primary'>Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="span5">
+                    <span>Уже есть аккаунт?</span>
+                    <a href="{% url 'django.contrib.auth.views.login' %}">
+                        Войдите
+                    </a>
+                </div>
+            </fieldset>
+        </form>
     </div>
-
 {% endblock %}

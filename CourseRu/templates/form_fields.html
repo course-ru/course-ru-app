@@ -1,0 +1,10 @@
+{% csrf_token %}
+{% for field in form %}
+    <div class='control-group {%if field.errors %}error{% endif %}'>
+        <label class='control-label' for='{{ field.name }}'>{{ field.label }}</label>
+        <div class='controls'>
+            {{ field }}
+            <span class='help-inline'>{{ field.errors }}</span>
+        </div>
+    </div>
+{% endfor %}
