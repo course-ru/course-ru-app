@@ -26,14 +26,6 @@
         <link rel="apple-touch-icon-precomposed" sizes="144x144"
               href="../assets/ico/apple-touch-icon-144-precomposed.png">
     </head>
-
-    {% comment %}
-
-                <div id="ul-wrapper" style="height: 20px; margin: 10px 0 10px 0;">
-                    <ul class="footer-links" style="text-align: center;">
-                        <li style="display: inline; padding: 0 40px 0 0;">
-                            <a href="{% url 'main.views.feedback' %}" class="btn btn-link">Отзыв о работе сайта</a>
-                            <a href="{% url 'main.views.about' %}" class="btn btn-link">О нас</a>{% endcomment %}
     <body>
         <div id="wrap">
             <div class="navbar navbar-fixed-top">
@@ -95,18 +87,18 @@
                     {% endblock %}
                 </div>
             </div>
-            {% comment %}        <div id="footer">
-                        <div class="container">
-                            <div id="ul-wrapper" style="height: 20px; margin: 10px 0 10px 0;">
-                                <ul class="footer-links" style="text-align: center;">
-                                    <li style="display: inline; padding: 0 40px 0 0;">
-                                        <a href="{% url 'main.views.feedback' %}" class="btn btn-link">Отзыв о работе сайта</a>
-                                        <a href="{% url 'main.views.about' %}" class="btn btn-link">О нас</a>
+        </div>
+        <script src="/static/js/jquery-1.9.1.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+    </body>
+</html>
 
-                                        {% endcomment %}{% comment %}Later add modal view.{% endcomment %}{% comment %}
-                            {% endcomment %}{% comment %}<a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>{% endcomment %}{% comment %}
+
+{% comment %}feedback modal window{% endcomment %}
+{% comment %}
+<a href="#myModal" data-toggle="modal">Отзыв о работе сайта</a>{% endcomment %}{% comment %}
                             <!-- Диалог сохранения отзыва -->
-                            {% endcomment %}{% comment %}                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+                            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
@@ -120,18 +112,13 @@
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
                                     <button class="btn btn-primary">Отослать</button>
                                 </div>
-                            </div>{% endcomment %}{% comment %}
+                            </div>
                         </li>
-                        {% endcomment %}{% comment %}<li style="display: inline; padding: 0 0 0 40px;">
+                        <li style="display: inline; padding: 0 0 0 40px;">
                             <a href="Ссылка на подписку">Подписаться на новости</a>
                         </li>{% endcomment %}{% comment %}
                     </ul>
                 </div>
             </div>
-        </div>{% endcomment %}
-            <!-- Placed at the end of the document so the pages load faster -->
-            <!-- use cdn or local script -->
-            <script src="/static/js/jquery-1.9.1.js"></script>
-            <script src="/static/js/bootstrap.js"></script>
-    </body>
-</html>
+        </div>
+        {% endcomment %}
