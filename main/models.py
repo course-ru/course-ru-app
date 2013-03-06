@@ -5,10 +5,10 @@ from django.db.models.signals import post_save
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=100)
-    short_summary = models.TextField(max_length=100)
+    name = models.CharField(max_length=40)
+    short_summary = models.TextField(max_length=200)
     description = models.TextField()
-    organisation = models.CharField(max_length=100)
+    organisation = models.CharField(max_length=30)
     logo = models.FileField(upload_to='logos')
     start_date = models.DateField()
     end_date = models.DateField()

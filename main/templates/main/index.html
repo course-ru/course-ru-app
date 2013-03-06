@@ -6,23 +6,17 @@
     <ul class="thumbnails">
         {% for course in courses %}
             <li class="span4">
-                <a href="{% url 'course' course.id %}">{{ course.name }}</a>
+                <a href="{% url 'course' course.id %}" style="text-decoration: none;" class="thumbnail course-card">
+                    <img src="{{ MEDIA_URL }}{{ course.logo }}" alt="{{ course.name }}" class="course-logo">
 
-                <div class="thumbnail">
-                    {% if course.logo %}
-                        <img src="{{ MEDIA_URL }}{{ course.logo }}" alt="{{ course.name }}">
-                    {% else %}
-                        <img src="/static/img/dummy_250_180.gif" alt="{{ course.name }}">
-                    {% endif %}
+                    <div class="caption" style="border-top: 1px solid #dddddd; margin-top: 5px;">
+                        <h4>{{ course.name }}</h4>
 
-                    <div class="caption">
-                        <p>{{ course.name }}</p>
+                        <p class="course-short-description">{{ course.short_summary }}</p>
+
+                        <p>{{ course.organisation }} | {{ course.start_date }}</p>
                     </div>
-
-                    <div>
-                        <p>{{ course.short_summary }}</p>
-                    </div>
-                </div>
+                </a>
             </li>
         {% endfor %}
     </ul>

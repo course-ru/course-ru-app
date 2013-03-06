@@ -9,7 +9,6 @@
 
         <!-- Bootstrap -->
         <link href="/static/css/bootstrap.css" rel="stylesheet">
-        <link href="/static/css/bootstrap-stickyfooter.css" rel="stylesheet">
 
         <!-- App -->
         <link href="/static/css/main.css" rel="stylesheet">
@@ -59,33 +58,33 @@
                         </ul>
                     </div>
                 </div>
-                <header class="container clearfix" style="padding-top: 20px;margin-bottom: 30px;">
-                    <div style="float: left; display: block;">
-                        <a href="{% url 'index' %}" id="logo">
-                            <img src="/static/logo.png" alt="logo" width="120">
-                        </a>
-                    </div>
-                    <div style="float: left; padding-left: 50px; font-family: 'Helvetica Neue'; color: #444444; font-size: 60px;">
-                        <h1 id="header">Geek University</h1>
-
-                        <p class="lead">We will geek u</p>
-                    </div>
-                </header>
-                <div class="container">
-                    <div class="row">
-                        {% if messages %}
-                            <ul class="messages unstyled">
-                                {% for message in messages %}
-                                    <li{% if message.tags %}
-                                        class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-                    {% block content %}
-
-                    {% endblock %}
+            </div>
+            <header class="container clearfix" style="padding-top: 55px;margin-bottom: 10px;">
+                <div style="float: left; display: block;">
+                    <a href="{% url 'index' %}" id="logo">
+                        <img src="/static/logo.png" alt="logo" width="120">
+                    </a>
                 </div>
+                <div style="float: left; padding-left: 50px; font-family: 'Helvetica Neue'; color: #444444; font-size: 60px;">
+                    <h1 id="header">Geek University</h1>
+
+                    <p class="lead">We will geek u</p>
+                </div>
+            </header>
+            <div class="container">
+                <div class="row">
+                    {% if messages %}
+                        <ul class="messages unstyled">
+                            {% for message in messages %}
+                                <li{% if message.tags %}
+                                    class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                {% block content %}
+
+                {% endblock %}
             </div>
         </div>
         <script src="/static/js/jquery-1.9.1.js"></script>
