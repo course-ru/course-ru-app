@@ -24,3 +24,8 @@ def course(request, course_id, template_name='student/course.html'):
         return render(request, template_name, {'course': course})
     else:
         return HttpResponseRedirect(reverse('main.views.course', kwargs={'course_id': course_id}))
+
+
+def courses(request, template_name='student/courses.html'):
+    courses = request.user.userprofile.courses.all()
+    return render(request, template_name, {'Courses': courses})
