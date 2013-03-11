@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}CourseRu | Мои курсы{% endblock %}
+
+{% block content %}
+    {% if Courses %}
+        Список курсов:
+        <ul>
+            {% for course in Courses %}
+                <li>
+                    <a href="{% url 'instructor.views.course' course.id %}">
+                        {{ course.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        Нет курсов.
+    {% endif %}
+{% endblock %}
