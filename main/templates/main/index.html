@@ -6,7 +6,7 @@
     <ul class="thumbnails">
         {% for course in courses %}
             <li class="span4">
-                <a href="{% url 'course' course.id %}" style="text-decoration: none;" class="thumbnail course-card">
+                <a href="{% url 'main.views.course' course.id %}" style="text-decoration: none;" class="thumbnail course-card">
                     <img src="{{ MEDIA_URL }}{{ course.logo }}" alt="{{ course.name }}" class="course-logo">
 
                     <div class="caption" style="border-top: 1px solid #dddddd; margin-top: 5px;">

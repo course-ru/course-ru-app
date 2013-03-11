@@ -18,7 +18,7 @@ def about(request):
 
 def course(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
-    return render(request, 'main/course.html', {'course': course})
+    return render(request, 'main/course.html', {'course': course, 'user': request.user})
 
 
 def feedback(request):

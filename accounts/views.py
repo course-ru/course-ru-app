@@ -16,7 +16,6 @@ from django.contrib.auth.models import Permission
 
 from accounts.forms import UserCreationForm
 
-
 @csrf_protect
 def signup(request, template_name='templates/signup.html', email_template_name='templates/signup_email.html',
            signup_form=UserCreationForm, token_generator=default_token_generator, post_signup_redirect=None):
@@ -69,13 +68,6 @@ def signup_confirm(request, uidb36=None, token=None, token_generator=default_tok
     return HttpResponseRedirect(post_signup_redirect)
 
 
-#def profile(request):
-#    user = request.user
-#    userprofile = user.userprofile
-#    courses = profile.courses.all()
-#    return render(request, {'user': user, 'profile': userprofile, 'courses': courses})
-
-
 def denied(request, template_name='templates/noaccess.html'):
     return render(request, template_name)
 
@@ -87,7 +79,7 @@ def profile(request, template_name='main/profile.html'):
     courses = userprofile.courses.all()
     return render(request, template_name, {'User': user, 'UserProfile': userprofile, 'Courses': courses})
 
-
+@login_required
 def init(request):
     # temp. version
     #
