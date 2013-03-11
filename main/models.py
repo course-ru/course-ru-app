@@ -36,6 +36,12 @@ class Lecture(models.Model):
     def __unicode__(self):
         return unicode(self.name)
 
+class Document(models.Model):
+    name = models.CharField(max_length=200)
+    course = models.ForeignKey(Course, blank=True)
+    doc = models.FileField(upload_to='docs')
+    upload_date = models.DateTimeField()
+    appear_date = models.DateTimeField()
 
 class Feedback(models.Model):
     body = models.TextField()

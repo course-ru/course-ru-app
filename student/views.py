@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import permission_required, login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from main.models import Course
+from main.models import *
 
 denied = '/templates/denied/'
 
@@ -21,7 +21,8 @@ def apply_for_course(request, course_id):
 def course(request, course_id, template_name='student/course.html'):
     if len(request.user.userprofile.courses.filter(pk=course_id)) > 0:
         course = get_object_or_404(Course, id=course_id)
-        return render(request, template_name, {'course': course})
+        documents = Document.objects.filter(course=course)
+        return render(request, template_name, {'course': course, 'documents': documents})
     else:
         return HttpResponseRedirect(reverse('main.views.course', kwargs={'course_id': course_id}))
 

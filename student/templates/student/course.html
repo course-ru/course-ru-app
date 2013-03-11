@@ -4,6 +4,18 @@
 
 {% block content %}
     <h1>{{ course.name }}</h1>
+    <h3>Файлы</h3>
+    {% if documents %}
+        <ul>
+            {% for document in documents %}
+                <li><a href="{{ document.doc.url }}">{{ document.doc.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет файлов</p>
+    {% endif %}
+    <hr />
+    <h3>Видеолекции</h3>
     {% for lecture in course.lecture_set.all %}
         <div>
             <div>

@@ -4,13 +4,8 @@
 
 {% block content %}
     <h1>{{ course.name }}</h1>
-    {% for lecture in course.lecture_set.all %}
-        <div>
-            <div>
-                {{ lecture.name }}
-            </div>
-            <iframe width="420" height="315" src="http://www.youtube.com/embed/{{ lecture.youtube_video_id }}"
-                    frameborder="0" allowfullscreen></iframe>
-        </div>
-    {% endfor %}
+    <ul>
+        <li><a href="{% url 'instructor.views.upload' course.id %}">Управление файлами</a></li>
+        <li><a href="#">Управление видеолекциями</a></li>
+    </ul>
 {% endblock %}

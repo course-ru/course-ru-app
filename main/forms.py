@@ -48,3 +48,9 @@ class FeedbackForm(ModelForm):
 
     class Meta:
         model = Feedback
+
+class DocumentForm(ModelForm):
+
+    class Meta:
+        model = Document
+        exclude = ('course',)

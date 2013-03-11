@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from main.forms import AddCourseForm
+from main.forms import *
 from main.models import *
 
 
@@ -39,3 +39,22 @@ def course(request, course_id, template_name='instructor/course.html'):
 def courses(request, template_name='instructor/courses.html'):
     courses = request.user.userprofile.courses.all()
     return render(request, template_name, {'Courses': courses})
+
+
+@login_required
+def upload(request, course_id, template_name='instructor/upload.html'):
+    if len(request.user.userprofile.courses.filter(pk=course_id)) > 0:
+        course = get_object_or_404(Course, id=course_id)
+        if request.method == 'POST':
+            form = DocumentForm(request.POST, request.FILES)
+            if form.is_valid():
+                doc = form.save(commit=False)
+                doc.course = course
+                doc.save()
+                return HttpResponseRedirect(reverse('instructor.views.upload', kwargs={'course_id': course.id}))
+        else:
+            form = DocumentForm()
+        documents = Document.objects.filter(course=course)
+        return render(request, template_name, {'documents': documents, 'form': form, 'course': course})
+    else:
+        return HttpResponseRedirect(reverse('main.views.course', kwargs={'course_id': course_id}))
