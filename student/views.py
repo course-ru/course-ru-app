@@ -13,11 +13,14 @@ def apply_for_course(request, course_id):
         course = get_object_or_404(Course, pk=course_id)
         user_profile.courses.add(course)
         user_profile.save()
-        return HttpResponseRedirect(reverse('course', kwargs={'courseId': course_id}))
+        return HttpResponseRedirect(reverse('student.views.course', kwargs={'course_id': course_id}))
     else:
-        return HttpResponseRedirect(reverse('course', kwargs={'courseId': course_id}))
+        return HttpResponseRedirect(reverse('student.views.course', kwargs={'course_id': course_id}))
 
 
 def course(request, course_id, template_name='student/course.html'):
-    course = get_object_or_404(Course, id=course_id)
-    return render(request, template_name, {'course': course})
+    if len(request.user.userprofile.courses.filter(pk=course_id)) > 0:
+        course = get_object_or_404(Course, id=course_id)
+        return render(request, template_name, {'course': course})
+    else:
+        return HttpResponseRedirect(reverse('main.views.course', kwargs={'course_id': course_id}))

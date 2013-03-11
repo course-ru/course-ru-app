@@ -13,7 +13,7 @@
                 <ul>
                     {% for course in Courses %}
                         <li>
-                            <a href="{% url 'main.views.course' course.id%}">
+                            <a href="{% url 'student.views.course' course.id%}">
                                 {{ course.name }}
                             </a>
                         </li>
