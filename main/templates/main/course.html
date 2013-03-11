@@ -11,7 +11,13 @@
         <div class="span4">
             <div>{{ course.organisation }}</div>
             <div>{{ course.start_date }} - {{ course.end_date }}</div>
-
+            {% if user.is_authenticated %}
+                {% if course in user.userprofile.courses.all %}
+                    <a href="{% url 'student.views.course' course.id %}">Страница курса</a>
+                {% else %}
+                    <a href="{% url 'student.views.apply_for_course' course.id %}" class="btn">Вступить</a>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
