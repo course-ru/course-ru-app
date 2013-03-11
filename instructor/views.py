@@ -6,6 +6,7 @@ from django.shortcuts import render
 from main.forms import AddCourseForm
 from main.models import *
 
+
 denied = '/templates/denied/'
 
 
@@ -17,7 +18,7 @@ def add_course(request, template_name='instructor/addcourse.html', add_course_fo
         if form.is_valid():
             course = form.save()
             if post_course_new_redirect is None:
-                post_course_new_redirect = reverse('main.views.course', kwargs={'courseId': course.id})
+                post_course_new_redirect = reverse('main.views.course', kwargs={'course_id': course.id})
             return HttpResponseRedirect(post_course_new_redirect)
     else:
         form = add_course_form()

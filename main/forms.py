@@ -1,7 +1,6 @@
 # coding=utf-8
 from django import forms
 from django.forms import ModelForm
-
 from main.models import *
 
 
@@ -26,8 +25,17 @@ class AddCourseForm(ModelForm):
         course = super(AddCourseForm, self).save(commit=False)
         course.name = self.cleaned_data['name']
         course.description = self.cleaned_data['description']
+        course.start_date = self.cleaned_data['start_date']
+        course.end_date = self.cleaned_data['end_date']
+        course.organization = self.cleaned_data['organization']
+        course.short_summary = self.cleaned_data['short_summary']
+        course.logo = self.cleaned_data['logo']
+
+        print course.logo
+
         if commit:
             course.save()
+
         return course
 
 
