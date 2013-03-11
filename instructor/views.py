@@ -17,6 +17,7 @@ def add_course(request, template_name='instructor/addcourse.html', add_course_fo
         form = add_course_form(request.POST, request.FILES)
         if form.is_valid():
             course = form.save()
+            request.user.userprofile.courses.add(course) # # # # #
             if post_course_new_redirect is None:
                 post_course_new_redirect = reverse('main.views.course', kwargs={'course_id': course.id})
             return HttpResponseRedirect(post_course_new_redirect)
