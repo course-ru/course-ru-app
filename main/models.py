@@ -51,8 +51,14 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True)
     courses = models.ManyToManyField(Course, blank=True)
 
+    def is_student(self):
+        return True if (len(self.user.groups.filter(name='students')) > 0) else False
+
+    def is_instructor(self):
+        return True if (len(self.user.groups.filter(name='instructors')) > 0) else False
+
     def __repr__(self):
-        return self.user
+        return str(self.user)
 
     def __unicode__(self):
         return "%s's profile" % self.user

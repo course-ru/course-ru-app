@@ -3,6 +3,8 @@
 {% block title %}CourseRu | Мои курсы{% endblock %}
 
 {% block content %}
+    <a href="{% url 'instructor.views.add_course' %}" class="btn">Новый курс</a>
+    <hr />
     {% if Courses %}
         Список курсов:
         <ul>

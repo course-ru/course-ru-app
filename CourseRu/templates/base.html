@@ -43,6 +43,16 @@
                                         {{ user.username }}
                                     </a>
                                 </li>
+                                {% if user.userprofile.is_student %}
+                                    <li>
+                                        <a href="{% url 'student.views.courses' %}" class="btn btn-link">Мои курсы</a>
+                                    </li>
+                                {% endif %}
+                                {% if user.userprofile.is_instructor %}
+                                    <li>
+                                        <a href="{% url 'instructor.views.courses' %}" class="btn btn-link">Мои курсы</a>
+                                    </li>
+                                {% endif %}
                                 <li>
                                     <a href="{% url 'django.contrib.auth.views.logout' %}" class="btn btn-link">
                                         Выйти
