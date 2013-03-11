@@ -6,22 +6,5 @@
     <div>
         Пользователь <b>{{ User.username }}</b><br>
         <a href="{% url 'django.contrib.auth.views.password_change' %}">Сменить пароль</a>
-        <hr/>
-        <div>
-            {% if Courses %}
-                Список курсов:
-                <ul>
-                    {% for course in Courses %}
-                        <li>
-                            <a href="{% url 'student.views.course' course.id%}">
-                                {{ course.name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                Нет курсов.
-            {% endif %}
-        </div>
     </div>
 {% endblock %}
