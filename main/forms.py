@@ -21,17 +21,18 @@ class AddCourseForm(ModelForm):
         description = self.cleaned_data['description']
         return description
 
+    def clean_logo(self):
+        return self.cleaned_data['logo']
+
     def save(self, commit=True):
         course = super(AddCourseForm, self).save(commit=False)
         course.name = self.cleaned_data['name']
         course.description = self.cleaned_data['description']
         course.start_date = self.cleaned_data['start_date']
         course.end_date = self.cleaned_data['end_date']
-        course.organization = self.cleaned_data['organization']
+        course.organisation = self.cleaned_data['organisation']
         course.short_summary = self.cleaned_data['short_summary']
         course.logo = self.cleaned_data['logo']
-
-        print course.logo
 
         if commit:
             course.save()

@@ -14,7 +14,7 @@ denied = '/templates/denied/'
 def add_course(request, template_name='instructor/addcourse.html', add_course_form=AddCourseForm,
                post_course_new_redirect=None):
     if request.method == 'POST':
-        form = add_course_form(request.POST)
+        form = add_course_form(request.POST, request.FILES)
         if form.is_valid():
             course = form.save()
             if post_course_new_redirect is None:
