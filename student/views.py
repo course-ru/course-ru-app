@@ -6,8 +6,7 @@ from main.models import Course
 
 denied = '/templates/denied/'
 
-
-@permission_required('main.can_apply', login_url='/accounts/login?huy=pizda')
+@permission_required('main.can_apply', login_url='/accounts/login')
 def apply_for_course(request, course_id):
     user_profile = request.user.userprofile
     if len(user_profile.courses.filter(id=course_id)) == 0:

@@ -69,11 +69,11 @@ def signup_confirm(request, uidb36=None, token=None, token_generator=default_tok
     return HttpResponseRedirect(post_signup_redirect)
 
 
-def profile(request):
-    user = request.user
-    profile = user.userprofile
-    courses = profile.courses.all()
-    return render(request, {'user': user, 'profile': profile, 'courses': courses})
+#def profile(request):
+#    user = request.user
+#    userprofile = user.userprofile
+#    courses = profile.courses.all()
+#    return render(request, {'user': user, 'profile': userprofile, 'courses': courses})
 
 
 def denied(request, template_name='templates/noaccess.html'):
@@ -81,10 +81,11 @@ def denied(request, template_name='templates/noaccess.html'):
 
 
 @login_required
-def profile(request, user_id, template_name='main/profile.html'):
-    user = get_object_or_404(User, pk=user_id)
-    user_profile = user.userprofile
-    return render(request, template_name, {'User': user, 'UserProfile': user_profile})
+def profile(request, template_name='main/profile.html'):
+    user = request.user
+    userprofile = user.userprofile
+    courses = userprofile.courses.all()
+    return render(request, template_name, {'User': user, 'UserProfile': userprofile, 'Courses': courses})
 
 
 def init(request):
