@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.timezone import utc
+from django.utils.datetime_safe import datetime
 from main.forms import *
 from main.models import *
 
@@ -50,11 +52,12 @@ def upload(request, course_id, template_name='instructor/upload.html'):
             if form.is_valid():
                 doc = form.save(commit=False)
                 doc.course = course
+                doc.upload_date = datetime.utcnow().replace(tzinfo=utc)
                 doc.save()
                 return HttpResponseRedirect(reverse('instructor.views.upload', kwargs={'course_id': course.id}))
         else:
             form = DocumentForm()
-        documents = Document.objects.filter(course=course)
+        documents = Document.objects.filter(course=course).order_by('appear_date')
         return render(request, template_name, {'documents': documents, 'form': form, 'course': course})
     else:
         return HttpResponseRedirect(reverse('main.views.course', kwargs={'course_id': course_id}))

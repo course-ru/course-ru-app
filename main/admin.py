@@ -6,6 +6,7 @@ from main.models import *
 admin.site.register(Course)
 admin.site.register(Lecture)
 admin.site.register(Feedback)
+admin.site.register(Document)
 
 admin.site.unregister(User)
 

@@ -53,4 +53,4 @@ class DocumentForm(ModelForm):
 
     class Meta:
         model = Document
-        exclude = ('course',)
+        exclude = ('course', 'upload_date')
